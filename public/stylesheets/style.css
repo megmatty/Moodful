@@ -1,8 +1,143 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+	box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+.container {
+	width: 90%;
+	margin: 0 auto;
 }
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	width: 100%;
+}
+
+nav {
+	display: flex;
+	justify-content: space-around;
+	width: 33.3%;
+}
+
+.banner {
+	padding-top: 60px;
+	text-align: center;
+}
+
+/*Log Entry Card Layout*/
+	.entry-card {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		margin-bottom: 15px;
+	}
+
+	.entry-card-bar {
+		display: flex;
+		background-color: lightblue;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		padding: 10px 15px;
+	}
+
+	.entry-date {
+		flex-basis: 45%;
+	}
+
+	.edit-button {
+		margin-right: 5px;
+	}
+
+	.entry-data {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 20px 0;
+	}
+
+	.mood-text {
+		margin: 0 15px;
+	}
+
+	.journal {
+		font-size: 0.9em;
+		margin-right: 15px;
+		padding: 0 5px;
+		max-width: 65%;
+	}
+
+/*Dashboard Containers*/
+	.dashboard-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		margin-bottom: 15px;
+	}
+
+	.dashboard-item-container {
+		width: 33.3%;
+		text-align: center;
+	}
+
+	.dashboard-item-bar {
+		background-color: lightblue;
+		width: 100%;
+		padding: 10px 15px;
+		text-align: center;
+	}
+
+	.dashboard-item-container > .entry-data {
+		align-items: center;
+		flex-direction: column;
+		padding: 0 10px;
+	}
+
+	.lastmood, .lastact {
+		margin-bottom: 15px;
+	}
+
+	.piechart {
+		height: 75%;
+		background-color: #eee;
+	}
+
+/*Add entry containers*/
+.new-entry {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+fieldset {
+	height: 250px;
+	/*fixed height for now*/
+}
+
+.new-journal textarea {
+	height: 150px;
+}
+
+.btn-container {
+	flex-basis: 100%;
+	margin-top: 25px;
+}
+
+.btn-container button {
+	display: block;
+	margin: 0 auto;
+}
+
+
+
+
+
+

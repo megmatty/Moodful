@@ -1,0 +1,25 @@
+extends layout
+
+block content
+ include nav
+ .container
+  .banner
+    h1 #{user.firstName}'s Mood Log 
+  each entry in user.entries
+   .entry-card
+     .entry-card-bar
+      if (entry.date)
+       a.entry-date(href= '/log/' + entry.date) #{moment(entry.date).format('lll')}
+      .entry-change-buttons
+       a.edit-button.entry-date(href= '/edit/' + entry.date) Edit
+       a.edit-button.entry-date(href= '/delete/' + entry.date) Delete
+     .entry-data
+       if (entry.mood)
+        span.mood-text
+         = entry.mood
+       if (entry.activity) 
+        span.activity-text
+         = entry.activity
+       if (entry.journal)
+        span.journal
+         = entry.journal 

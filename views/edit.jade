@@ -1,0 +1,18 @@
+extends layout
+
+block content
+ include nav
+ .container
+  .banner
+    h1 Edit Entry
+    p Instructions go here
+  .new-entry-container
+    form.new-entry(role='form', action='/edit/' + '#{entries.date}', method='post')
+      fieldset.new-mood
+        input(type='text', name='mood', placeholder='Add Mood', value= '#{entries.mood}')
+      fieldset.new-activity
+        input(type='text', name='activity', placeholder='Add Activity', value= '#{entries.activity}')
+      fieldset.new-journal
+        textarea(type='text', name='journal', placeholder='Add Journal') #{entries.journal}
+      .btn-container 
+       button(type='submit') Submit

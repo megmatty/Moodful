@@ -1,0 +1,28 @@
+extends layout
+
+block content
+ include nav
+ .container
+  .banner
+   h1 #{user.firstName}'s Mood Dashboard
+
+  .dashboard-container
+   .dashboard-item-container
+    .dashboard-item-bar Monthly Moodcloud
+    .moodcloud
+      p Word cloud of moods
+   .dashboard-item-container
+    .dashboard-item-bar Weekly Moods
+    .piechart
+      p Pie Chart of moods
+   .dashboard-item-container
+    .dashboard-item-bar Last Entry
+    .entry-data
+      - for (var i=0; i<user.entries.length; i++) {
+       - if (i === user.entries.length - 1) {
+        span.lastmood #{user.entries[i].mood}
+        span.lastact #{user.entries[i].activity}
+        span.lastjourn #{user.entries[i].journal}
+       - }
+      - }
+

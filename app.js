@@ -9,14 +9,20 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+app.locals.home = true;
+app.locals.moment = require('moment');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+// app.set('views', './views');
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -28,8 +34,11 @@ app.use(cookieParser());
 app.use(require('express-session')({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore( {mongooseConnection:mongoose.connection})
 }));
+// maxAge: new Date(Date.now() + 3600000),
+
 app.use(passport.initialize());
 app.use(flash());
 app.use(passport.session());
@@ -38,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+
 // passport config
 var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
@@ -45,7 +55,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose_express4');
+mongoose.connect('mongodb://localhost/moodful-data');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
