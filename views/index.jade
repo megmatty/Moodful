@@ -3,8 +3,44 @@ extends layout
 block content
  include nav-index
  .container
-  div
-  div
-  div
-  div
-  div
+  .hero 
+    h1 Moodful
+    h3 The mindful mood tracker
+  #about.info-panel
+    p What is Moodful?
+    p Irony gluten-free single-origin coffee lomo cred bitters. Truffaut chambray deep v sustainable, cred banh mi +1 authentic PBR&B echo park mustache bicycle rights paleo art party etsy. Ennui subway tile williamsburg pop-up, blog salvia direct trade. Meh asymmetrical art party, selvage church-key snackwave shoreditch hella stumptown woke la croix hot chicken.
+  #track.info-panel
+    p Track your daily moods
+    p Gluten-free tattooed squid, pinterest tumeric microdosing franzen wolf kinfolk af neutra food truck. Microdosing street art portland listicle, ethical direct trade lomo pickled cornhole tacos tumblr 3 wolf moon.
+  #analyze.info-panel
+    p Analyze your entries
+    p Slow-carb cornhole hammock you probably haven't heard of them, lyft before they sold out cardigan fingerstache paleo intelligentsia mustache food truck selfies pitchfork edison bulb.
+  #reg.info-panel-reg
+    p Register
+    p Start tracking your moods today!
+    .register-container
+     form.register-form(role='form', action="/register",method="post")
+      label(for='firstName') First Name:
+      input(type='text', name="firstName", placeholder='Enter First Name')
+      label(for='firstName') Username:
+      input(type='text', name="username", placeholder='Enter Username')
+      label(for='firstName') Password:
+      input(type='password', name="password", placeholder='Password')
+      button(type='submit') Submit
+  .login-modal
+    h3 Login
+    p Please login to your account.
+    form.login-form(role='form', action="/login", method="post")
+      label(for='username') Username:
+      input(type='text', name="username", placeholder='Enter Username')
+      label(for='password') Password:
+      input(type='password', name="password", placeholder='Password')
+      button(type='submit') Submit
+      br
+      a(href='/')
+        button.login-cancel-btn(type="button") Cancel
+
+
+
+
+

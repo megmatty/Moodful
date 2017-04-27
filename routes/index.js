@@ -27,7 +27,7 @@ router.post('/register', (req, res, next) => {
                 if (err) {
                     return next(err);
                 }
-                res.redirect('/log');
+                res.redirect('/dashboard');
             });
         });
     });
@@ -44,7 +44,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/login'
         if (err) {
             return next(err);
         }
-        res.redirect('/log');
+        res.redirect('/dashboard');
     });
 });
 

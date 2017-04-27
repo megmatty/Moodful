@@ -1,16 +1,16 @@
 {
-  "name": "passport-local-express4",
-  "version": "0.0.0",
+  "name": "Moodful",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "make test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mjhea0/passport-local-express4.git"
+    "url": "https://github.com/megmatty/Moodful.git"
   },
-  "author": "Michael Herman <michael@mherman.org>",
+  "author": "Meg Matty",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.10.2",

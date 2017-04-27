@@ -3,7 +3,7 @@
 }
 
 .container {
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -11,23 +11,126 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 20px;
+	padding: 0 40px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	width: 100%;
+	background-color: #fff;
 }
 
 nav {
 	display: flex;
+	flex-direction: column;
+	text-align: center;
 	justify-content: space-around;
-	width: 33.3%;
+	width: 100%;
+	z-index: 98;
+	height: 120px;
+	background-color: lightgrey;
+	top: 60px;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+	padding: 5px 0;
+	position: absolute;
+}
+
+nav a {
+	padding: 10px;
 }
 
 .banner {
 	padding-top: 60px;
 	text-align: center;
+}
+
+.hero {
+	padding-top: 50px;
+	text-align: center;
+	height: 200px;
+}
+
+.info-panel, .info-panel-reg {
+	border: 1px #ccc solid;
+	padding: 20px;
+	text-align: center;
+}
+
+.login-modal {
+	display: none;
+	text-align: center;
+	width: 80%;
+	position: absolute;
+	top: 30%; 
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	z-index: 99;
+	background-color: #ccc;
+	padding: 5px 20px 20px;
+}
+
+.login-form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.login-form input {
+	border: 1px #ddd solid;
+	margin: 0 0 10px 0;
+	height: 25px;
+}
+
+.login-form label {
+	display: inline-block;
+	width: 80px;
+	text-align: left;
+}
+
+.login-form button {
+	height: 30px;
+	background-color: grey;
+	color: #fff;
+	margin-left: 25px
+}
+
+.login-cancel-btn {
+	margin-right: 25px;
+}
+
+.register-form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.register-container {
+	padding: 0 15px;
+}
+ 
+.register-form button {
+	display: block;
+	margin: 5px auto;
+	height: 30px;
+	width: 33.3%;
+	background-color: grey;
+	color: #fff;
+}
+
+.register-form input {
+	border: 1px #ddd solid;
+	margin: 0 0 10px 0;
+}
+
+.register-form label {
+	display: inline-block;
+	width: 80px;
+	text-align: right;
 }
 
 /*Log Entry Card Layout*/
@@ -136,8 +239,67 @@ fieldset {
 	margin: 0 auto;
 }
 
+@media only screen and (min-width: 768px) {
+	
+	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width: 40%;
+		z-index: 0;
+		background-color: #fff;
+		position: static;
+		height: auto;
+	}
+	
+	.register-form {
+		width: 45%;
+		margin:  0 auto;
+	}
+
+	.register-container {
+		padding: 0;
+	}
+
+	.register-form input {
+		height: 30px;
+		width: 65%;
+	}
+
+	.info-panel {
+		text-align: right;
+	}
+
+	.info-panel:nth-child(2n) {
+		text-align: left;
+	}
+
+	.login-modal {
+		width: 40%;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
 
 
+}
+
+@media only screen and (min-width: 1024px) {
+
+	.container {
+		max-width: 80%;
+	}
+
+	.navbar {
+		padding: 0 100px;
+	}
+
+	.login-modal {
+		width: 33.3%;
+		padding-left: 60px;
+		padding-right: 60px;
+	}
+
+}
 
 
 
