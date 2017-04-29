@@ -11,6 +11,9 @@ block content
     .dashboard-item-bar Monthly Moodcloud
     .moodcloud
       p Word cloud of moods
+         each d in data
+           p 
+             span(style="font-size:#{d.value}em;") #{d.name}
    .dashboard-item-container
     .dashboard-item-bar Weekly Moods
     .piechart
