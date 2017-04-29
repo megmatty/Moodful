@@ -1,9 +1,19 @@
 .navbar
  h3
   a(href="/") Moodful
+ a(id='nav-toggle' href='#') &#9776;
  nav
-  a(href="/dashboard") Dashboard
-  a(href="/log") Log
-  a(href="/addEntry") New Entry
- if (user)
-  a(href="/logout") Logout
+  .nav-links
+   if (!user)
+    a(href="#about") About
+    a(href="#track") Track
+    a(href="#analyze") Analyze
+    a(href="#reg") Sign Up
+   if (user)
+    a(href="/dashboard") Dashboard
+    a(href="/log") Log
+    a(href="/addEntry") New Entry
+   if (!user)
+    a(href="#" id="login") Login
+   if (user)
+    a(href="/logout") Logout

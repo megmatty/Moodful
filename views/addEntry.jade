@@ -9,10 +9,31 @@ block content
   .new-entry-container
     form.new-entry(role='form', action='/addEntry', method='post')
       fieldset.new-mood
-        input(type='text', name='mood', placeholder='Add Mood')
+       legend Mood
+       input#sad(class= 'input_hidden', type='radio', name='mood', value='sad')
+       label(for='sad')
+         img(src='img/sad.png', alt="sad face")
+       input#happy(class= 'input_hidden', type='radio', name='mood', value='happy')
+       label(for='happy')
+         img(src='img/happy.png', alt="happy face")
+
       fieldset.new-activity
-        input(type='text', name='activity', placeholder='Add Activity')
+       legend Activity
+       input#work(class= 'input_hidden', type='checkbox', name='activity[]', value='work')
+       label(for='work')
+         img(src='img/sad.png', alt="sad face")
+       input#exercise(class= 'input_hidden', type='checkbox', name='activity[]', value='exercise')
+       label(for='exercise')
+         img(src='img/happy.png', alt="happy face")
+       input#school(class= 'input_hidden', type='checkbox', name='activity[]', value='school')
+       label(for='school')
+         img(src='img/sad.png', alt="sad face")
+       input#eat(class= 'input_hidden', type='checkbox', name='activity[]', value='eat')
+       label(for='eat')
+         img(src='img/happy.png', alt="happy face")
+
       fieldset.new-journal
-        textarea(type='text', name='journal', placeholder='Add Journal')
-      .btn-container 
-       button(type='submit') Submit
+       legend Journal
+       textarea(type='text', name='journal', placeholder='Add Journal')
+
+      button(type='submit') Submit

@@ -17,9 +17,10 @@ block content
        if (entry.mood)
         span.mood-text
          = entry.mood
-       if (entry.activity) 
-        span.activity-text
-         = entry.activity
+       if (entry.activity)
+        each item in entry.activity
+         span.activity-text
+          = item
        if (entry.journal)
         span.journal
          = entry.journal 

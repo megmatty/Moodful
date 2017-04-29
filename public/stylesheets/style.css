@@ -11,7 +11,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 40px;
+	padding: 0 25px;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -21,13 +21,10 @@
 }
 
 nav {
-	display: flex;
-	flex-direction: column;
+	display: none;
 	text-align: center;
-	justify-content: space-around;
 	width: 100%;
 	z-index: 98;
-	height: 120px;
 	background-color: lightgrey;
 	top: 60px;
 	right: 0;
@@ -39,6 +36,7 @@ nav {
 
 nav a {
 	padding: 10px;
+	display: block;
 }
 
 .banner {
@@ -179,16 +177,14 @@ nav a {
 
 /*Dashboard Containers*/
 	.dashboard-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-		margin-bottom: 15px;
+		display: block;
 	}
 
 	.dashboard-item-container {
-		width: 33.3%;
 		text-align: center;
+		margin-bottom: 40px;
+		background-color: #fff;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	}
 
 	.dashboard-item-bar {
@@ -209,47 +205,88 @@ nav a {
 	}
 
 	.piechart {
-		height: 75%;
 		background-color: #eee;
 	}
 
-/*Add entry containers*/
-.new-entry {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	/*Add entry containers*/
+	.new-entry-container {
+		width: 100%;
+	}
+
+	.new-entry {
+		margin: 0 auto;
+		width: 90%;
+	}
+
+	fieldset {
+		height: 250px;
+		width: 100%;
+		/*fixed height for now*/
+		float: left;
+		margin-bottom: 15px;
+	}
+
+	legend {
+		margin: 0 auto;
+	}
+
+	.new-journal textarea {
+		width: 100%;
+		height: 200px;
+	}
+
+	.new-entry-container button {
+		display: block;
+		margin: 0 auto;
+		clear: both;
+	}
+
+/*Emotion Icons*/
+.input_hidden {
+    position: absolute;
+    left: -9999px;
 }
 
-fieldset {
-	height: 250px;
-	/*fixed height for now*/
+.selected {
+    background-color: #ccc;
 }
 
-.new-journal textarea {
-	height: 150px;
+.new-entry label {
+    display: inline-block;
+    cursor: pointer;
+    width: 64px;
 }
 
-.btn-container {
-	flex-basis: 100%;
-	margin-top: 25px;
-}
-
-.btn-container button {
-	display: block;
+.new-entry label img {
+    padding: 3px;
+	width: 64px;
 	margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
+
+	.nav-menu {
+		display: flex;
+		width: 100%;
+	}
+
+	#nav-toggle {
+		display: none;
+	}
+
+	.nav-links {
+		display: flex;
+		justify-content: space-between;
+	}
 	
 	nav {
 		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-		width: 40%;
+		justify-content: flex-end;
 		z-index: 0;
 		background-color: #fff;
 		position: static;
 		height: auto;
+		margin: 0;
 	}
 	
 	.register-form {
@@ -280,6 +317,18 @@ fieldset {
 		padding-right: 40px;
 	}
 
+	/*Dashboard Containers*/
+	.dashboard-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.dashboard-item-container {
+		width: 75%;
+		margin: 0 auto 40px;
+	}
+
 
 }
 
@@ -297,6 +346,35 @@ fieldset {
 		width: 33.3%;
 		padding-left: 60px;
 		padding-right: 60px;
+	}
+
+	/*Dashboard Containers*/
+	.dashboard-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.dashboard-item-container {
+		width: 31%;
+		margin: 0 1.5% 0 0;
+	}
+
+	.dashboard-item-container:last-child {
+		margin: 0;
+	}
+
+	.new-entry {
+		width: 100%;
+	}
+
+	fieldset {
+		width: 30%;
+		margin: 0 1.5% 0;
+	}
+
+	fieldset:last-child {
+		margin-right: 0;
 	}
 
 }

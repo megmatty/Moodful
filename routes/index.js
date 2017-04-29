@@ -36,7 +36,7 @@ router.post('/register', (req, res, next) => {
 
 //GET /login
 router.get('/login', (req, res) => {
-    res.render('login', { user : req.user, error : req.flash('error')});
+    res.render('index', { user : req.user, error : req.flash('error')});
 });
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
@@ -99,10 +99,26 @@ router.get('/edit/:date', (req, res) => {
     res.status(500).redirect('/log'); });
 });
 
+//Get Pie chart data
+function getPieData (req) {
+  var obj = {};
+  for (var i = 0; i < req.user.entries.length; i++) {
+    var key = req.user.entries[i].mood;
+    console.log(key);
+    if (key in obj) {
+      console.log(key + 'repeat');
+      obj[key]++;
+    } else {
+      obj[key] = 1;
+    }
+  }
+  return obj;
+}
 
 //GET /dashboard
 router.get('/dashboard', (req, res) => {
-    res.render('dashboard', {user : req.user });
+    let obj = getPieData(req);
+    res.render('dashboard', {user : req.user, data : obj });
 });
 
 //POST /addEntry
@@ -119,7 +135,6 @@ router.post('/addEntry', (req, res) => {
         });
         user.save();
         console.log(req.body.entry);
-        console.log(req.user);
         res.redirect('/log');
       }) 
       .catch(err => { console.error(err); 
@@ -137,7 +152,7 @@ router.post('/edit/:date', (req, res) => {
             'entries.$.journal': req.body.journal}}
       )
       .exec() 
-      .then( (user) => {
+      .then(user => {
         res.redirect('/log');
       }) 
       .catch(err => { console.error(err); 

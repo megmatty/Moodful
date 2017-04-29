@@ -7,8 +7,24 @@ $('#login').on('click', function(event) {
 });
 
 //Hamburger Menu Handler (mobile)
-// $("nav a").click(function(){
-//   $(this).slideToggle("fast");
-// }).children().click(function(e) {
-//   e.stopPropagation();
-// });
+$("#nav-toggle").click(function(){
+  $('nav').slideToggle('300');
+  $('nav a').on('click', function(event) {
+  	$('nav').slideUp('300');
+  });
+});
+
+//Emotion Buttons
+$('.new-mood label').click(function(){
+    $(this).addClass('selected').siblings().removeClass('selected');
+});
+
+
+$('.new-activity label').click(function(){
+    $(this).toggleClass('selected');
+
+});
+
+//put on delete button
+//confirm("Press a button!");
+
