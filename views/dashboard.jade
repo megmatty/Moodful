@@ -15,7 +15,14 @@ block content
     .dashboard-item-bar Weekly Moods
     .piechart
       p Pie Chart of moods
-      p #{data} test
+      //p #{data} test
+      .center
+        #container
+         input#changeBtn(type='checkbox', onclick='changeBtn(this)', checked='')
+         label.switch(for='changeBtn')
+           span PIE
+           span BAR
+
    .dashboard-item-container
     .dashboard-item-bar Last Entry
     .entry-data
