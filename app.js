@@ -11,7 +11,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-var DATA_URL= 'mongodb://megmatty:moodful@ds125481.mlab.com:25481/moodful-data'
+// var DATA_URL= 'mongodb://megmatty:moodful@ds125481.mlab.com:25481/moodful-data'
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

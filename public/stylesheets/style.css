@@ -40,7 +40,7 @@ nav a {
 }
 
 .banner {
-	padding-top: 60px;
+	padding-top: 45px;
 	text-align: center;
 }
 
@@ -162,15 +162,27 @@ nav a {
 		justify-content: space-between;
 		align-items: center;
 		margin: 20px 0;
+		width: 100%;
+		padding: 0 5px;
 	}
 
-	.mood-text {
-		margin: 0 15px;
+	.activity-text {
+		display: block;
+		background-color: purple;
+		color: white;
+		padding: 5px;
+		border-radius: 5px;
+		margin-bottom: 5px;
+		text-align: center;
+	}
+
+	.entry-data-activity {
+		margin-left: 15px;
 	}
 
 	.journal {
 		font-size: 0.9em;
-		margin-right: 15px;
+		margin: 0 0 0 15px;
 		padding: 0 5px;
 		max-width: 65%;
 	}
@@ -208,7 +220,7 @@ nav a {
 		background-color: #eee;
 	}
 
-	/*Add entry containers*/
+	/*Add new entry*/
 	.new-entry-container {
 		width: 100%;
 	}
@@ -219,11 +231,11 @@ nav a {
 	}
 
 	fieldset {
-		height: 250px;
 		width: 100%;
-		/*fixed height for now*/
-		float: left;
 		margin-bottom: 15px;
+		text-align: center;
+		border-radius: 5px;
+		padding: 15px 0;
 	}
 
 	legend {
@@ -231,14 +243,20 @@ nav a {
 	}
 
 	.new-journal textarea {
-		width: 100%;
-		height: 200px;
+		width: 90%;
+		min-height: 200px;
+		border-radius: 5px;
 	}
 
 	.new-entry-container button {
 		display: block;
 		margin: 0 auto;
-		clear: both;
+		background-color: #ccc;
+		border-radius: 5px;
+		padding: 10px;
+		border:	0;
+		color: #fff;
+		width: 33.3%;
 	}
 
 /*Emotion Icons*/
@@ -254,13 +272,26 @@ nav a {
 .new-entry label {
     display: inline-block;
     cursor: pointer;
-    width: 64px;
+    margin: 0 0 10px 0;
+    border-radius: 5px;
+    padding: 2px;
 }
 
-.new-entry label img {
-    padding: 3px;
+.icon {
+	width: 75px;
+}
+
+.icon-log {
+	width: 55px;
+	text-align: center;
+}
+
+.new-entry img {
 	width: 64px;
-	margin: 0 auto;
+}
+
+.icon-log img {
+	width: 40px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -329,6 +360,19 @@ nav a {
 		margin: 0 auto 40px;
 	}
 
+/*	New Entry*/
+	
+	.new-entry {
+		width: 80%;
+	}
+
+	.icon {
+		width: 101px;
+	}
+
+	.new-entry img {
+		width: 90px;
+	}
 
 }
 
@@ -366,15 +410,29 @@ nav a {
 
 	.new-entry {
 		width: 100%;
+		text-align: center;
 	}
 
 	fieldset {
-		width: 30%;
-		margin: 0 1.5% 0;
+		width: 49%;
+		display: inline-block;
+		margin: 0 0 2% 0;
 	}
 
-	fieldset:last-child {
-		margin-right: 0;
+	fieldset:first-child {
+		margin-right: 2%;
+	}
+
+	.icon {
+		width: 86px;
+	}
+
+	.new-entry img {
+		width: 75px;
+	}
+
+	.new-journal {
+		width: 100%;
 	}
 
 }
