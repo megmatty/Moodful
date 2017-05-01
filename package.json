@@ -31,5 +31,8 @@
     "passport-local-mongoose": "^1.0.0",
     "serve-favicon": "^2.2.0",
     "should": "~2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
