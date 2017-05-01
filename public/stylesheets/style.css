@@ -2,6 +2,16 @@
 	box-sizing: border-box;
 }
 
+
+body {
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
 .container {
 	width: 100%;
 	margin: 0 auto;
@@ -17,7 +27,7 @@
 	left: 0;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	width: 100%;
-	background-color: #fff;
+	background-color: #EEA868;
 }
 
 nav {
@@ -25,7 +35,7 @@ nav {
 	text-align: center;
 	width: 100%;
 	z-index: 98;
-	background-color: lightgrey;
+	background-color: #B79ED7;
 	top: 60px;
 	right: 0;
 	left: 0;
@@ -37,7 +47,13 @@ nav {
 nav a {
 	padding: 10px;
 	display: block;
+	color: #52646F;
 }
+
+nav a:hover {
+	color: #52646F;
+}
+
 
 .banner {
 	padding-top: 45px;
@@ -45,15 +61,43 @@ nav a {
 }
 
 .hero {
-	padding-top: 50px;
+	padding-top: 65px;
 	text-align: center;
 	height: 200px;
+	background: #fff url('/img/mood-bg.png') repeat center;
 }
 
-.info-panel, .info-panel-reg {
-	border: 1px #ccc solid;
+.name {
+	font-family: 'Handlee', cursive;
+	color: #52646F;
+}
+
+.navbar a {
+	color: #fff;
+}
+
+.info-panel, #reg {
 	padding: 20px;
 	text-align: center;
+	color: #fff;
+	width: 105%;
+	margin-left: -2.5%;
+}
+
+#about {
+	background-color: #B79ED7; /*purple*/
+}
+
+#analyze {
+	background-color: #5DA0BF; /*blue*/
+}
+
+#track {
+	color: #52646F; /*grey*/
+}
+
+#reg {
+	background-color: #5AB4AE; /*green*/
 }
 
 .login-modal {
@@ -105,6 +149,7 @@ nav a {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: baseline;
+	margin: 0 auto;
 }
 
 .register-container {
@@ -123,12 +168,14 @@ nav a {
 .register-form input {
 	border: 1px #ddd solid;
 	margin: 0 0 10px 0;
+	height: 30px;
+	border-radius: 5px;
 }
 
 .register-form label {
 	display: inline-block;
-	width: 80px;
-	text-align: right;
+	width: 90px;
+	text-align: left;
 }
 
 /*Log Entry Card Layout*/
@@ -138,6 +185,7 @@ nav a {
 		justify-content: space-between;
 		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 		margin-bottom: 15px;
+		border-radius: 5px;
 	}
 
 	.entry-card-bar {
@@ -147,6 +195,7 @@ nav a {
 		align-items: center;
 		width: 100%;
 		padding: 10px 15px;
+		border-radius: 5px 5px 0 0;
 	}
 
 	.entry-date {
@@ -159,32 +208,27 @@ nav a {
 
 	.entry-data {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
 		align-items: center;
-		margin: 20px 0;
+		margin: 10px 0;
 		width: 100%;
 		padding: 0 5px;
 	}
 
-	.activity-text {
-		display: block;
+	.activity-text, .lastact {
+		display: inline-block;
 		background-color: purple;
 		color: white;
-		padding: 5px;
+		padding: 10px;
 		border-radius: 5px;
-		margin-bottom: 5px;
+		margin: 10px 5px 10px 0;
 		text-align: center;
-	}
-
-	.entry-data-activity {
-		margin-left: 15px;
 	}
 
 	.journal {
 		font-size: 0.9em;
 		margin: 0 0 0 15px;
 		padding: 0 5px;
-		max-width: 65%;
 	}
 
 /*Dashboard Containers*/
@@ -290,9 +334,16 @@ nav a {
 	width: 64px;
 }
 
-.icon-log img {
+.icon-log img, .lastmood img {
 	width: 40px;
 }
+
+@media only screen and (min-width: 425px) {
+	.register-form {
+		width: 75%;
+	}
+}
+
 
 @media only screen and (min-width: 768px) {
 
@@ -314,7 +365,7 @@ nav a {
 		display: flex;
 		justify-content: flex-end;
 		z-index: 0;
-		background-color: #fff;
+		background-color: #EEA868;
 		position: static;
 		height: auto;
 		margin: 0;
@@ -336,6 +387,8 @@ nav a {
 
 	.info-panel {
 		text-align: right;
+		padding-left: 50px;
+		padding-right: 50px;
 	}
 
 	.info-panel:nth-child(2n) {
@@ -374,6 +427,13 @@ nav a {
 		width: 90px;
 	}
 
+/*Log page*/
+
+	.entry-data {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
 }
 
 @media only screen and (min-width: 1024px) {
@@ -390,6 +450,11 @@ nav a {
 		width: 33.3%;
 		padding-left: 60px;
 		padding-right: 60px;
+	}
+
+	.info-panel, #reg {
+		width: 100%;
+		margin: 0;
 	}
 
 	/*Dashboard Containers*/
