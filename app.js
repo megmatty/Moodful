@@ -11,7 +11,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-// var DATA_URL= 'mongodb://megmatty:moodful@ds125481.mlab.com:25481/moodful-data'
+
+const {PORT, DATABASE_URL} = require('./bin/config');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -56,7 +57,7 @@ passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
 // mongoose.connect('mongodb://localhost/moodful-data');
-mongoose.connect('mongodb://megmatty:moodful@ds125481.mlab.com:25481/moodful-data');
+mongoose.connect(DATABASE_URL);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
