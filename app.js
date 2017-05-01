@@ -55,7 +55,8 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose
-mongoose.connect('mongodb://localhost/moodful-data');
+// mongoose.connect('mongodb://localhost/moodful-data');
+mongoose.connect('mongodb://megmatty:moodful@ds125481.mlab.com:25481/moodful-data');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
