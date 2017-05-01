@@ -21,9 +21,11 @@ block content
       - for (var i=0; i<user.entries.length; i++) {
        - if (i === user.entries.length - 1) {
         span.lastmood
+         .icon-log 
           img(src='img/moods/#{user.entries[i].mood}.svg', alt="#{user.entries[i].mood} face")
-        for each activity in user.entries.activity
-        span.lastact #{user.entries[i].activity}
+          span #{user.entries[i].mood}
+        - for (var j=0; j<user.entries.length; j++)
+          span.lastact #{user.entries[i].activity[j]}
         span.lastjourn #{user.entries[i].journal}
        - }
       - }
