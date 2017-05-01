@@ -5,40 +5,40 @@ block content
  .container
   .hero 
     h1.name Moodful
-    h3.name The mindful mood tracker
+    h3.name the mindful mood tracker
   #about.info-panel
-    p What is Moodful?
-    p Irony gluten-free single-origin coffee lomo cred bitters. Truffaut chambray deep v sustainable, cred banh mi +1 authentic PBRB echo park mustache bicycle rights paleo art party etsy. Ennui subway tile williamsburg pop-up, blog salvia direct trade.
+    h3 What is Moodful?
+    p Moodful is way for you to track and analyze your moods while using some basic mindfulness principles. Mindfulness means focusing your mind to be fully present and aware of where you are and what you’re doing, without being overly reactive to what's going on around you.
   #track.info-panel
-    p Track your daily moods
-    p Gluten-free tattooed squid, pinterest tumeric microdosing franzen wolf kinfolk af neutra food truck. Microdosing street art portland listicle, ethical direct trade lomo pickled cornhole tacos tumblr 3 wolf moon.
+    h3 Track your daily moods
+    p Logging your moods daily will help you track and monitor your emotions. Over time, you can become more aware of your feelings and what things might affect them. Moodful offers a simple interface for creating a record of your mood, daily activities, and your thoughts about the day.
   #analyze.info-panel
-    p Analyze your entries
-    p Slow-carb cornhole hammock you probably haven't heard of them, lyft before they sold out cardigan fingerstache paleo intelligentsia mustache food truck selfies pitchfork edison bulb.
+    h3 Analyze your entries
+    p In addition to reviewing your log entries, Moodful provides a monthly "mood cloud" of your mood keywords, a weekly pie chart breakdown of your moods, and your last entry displayed to reflect upon. Reviewing this information can further help you gain awareness of how you feel over time.
   #reg.info-panel-reg
-    p Register
+    h3 Register
     p Start tracking your moods today!
     .register-container
      form.register-form(role='form', action="/register",method="post")
       label(for='firstName') First Name:
       input(type='text', name="firstName", placeholder='Enter First Name')
-      label(for='firstName') Username:
-      input(type='text', name="username", placeholder='Enter Username')
-      label(for='firstName') Password:
-      input(type='password', name="password", placeholder='Password')
-      button(type='submit') Submit
-  .login-modal
-    h3 Login
-    p Please login to your account.
-    form.login-form(role='form', action="/login", method="post")
       label(for='username') Username:
       input(type='text', name="username", placeholder='Enter Username')
       label(for='password') Password:
       input(type='password', name="password", placeholder='Password')
-      button(type='submit') Submit
+      button.btn(type='submit') Submit
+  .login-modal
+    h3 Login
+    p Please login to your account.
+    form.login-form(role='form', action="/login", method="post")
+      label#user(for='username') Username:
+      input(type='text', name="username", placeholder='Enter Username')
+      label(for='password') Password:
+      input(type='password', name="password", placeholder='Password')
+      button.btn(type='submit') Submit
       br
       a(href='/')
-        button.login-cancel-btn(type="button") Cancel
+        button.btn.login-cancel-btn(type="button") Cancel
 
 
 

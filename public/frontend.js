@@ -6,6 +6,13 @@ $('#login').on('click', function(event) {
 	$('.login-modal').fadeIn('slow');
 });
 
+//keep focus on login modal
+$('#login button').submit(function(event) {
+	event.preventDefault();
+	$('#user').focus();
+	$('.login-modal').fadeOut('slow');
+});
+
 //Hamburger Menu Handler (mobile)
 $("#nav-toggle").click(function(){
   $('nav').slideToggle('300');

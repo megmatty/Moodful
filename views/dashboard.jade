@@ -8,24 +8,35 @@ block content
 
   .dashboard-container
    .dashboard-item-container
-    .dashboard-item-bar Monthly Moodcloud
+    .dashboard-item-bar 
+     span Monthly Moodcloud
     .moodcloud
-      p Word cloud of moods
+     if (user.entries == 0)
+      p You haven't logged any moods yet
    .dashboard-item-container
-    .dashboard-item-bar Weekly Moods
+    .dashboard-item-bar
+     span Weekly Moods
     .piechart
-      //- p #{data} test
+      if (user.entries == 0)
+       p You haven't logged any moods yet
    .dashboard-item-container
-    .dashboard-item-bar Last Entry
+    .dashboard-item-bar.date-bar
+      if (user.entries[user.entries.length - 1].date)
+       a.last-entry-date(href= '/log/' + user.entries[user.entries.length - 1].date) #{moment(user.entries[user.entries.length - 1].date).format('lll')} 
+      span Last Entry
     .entry-data
+     if (user.entries == 0)
+      p You haven't logged any moods yet
+     else
       - for (var i=0; i<user.entries.length; i++) {
        - if (i === user.entries.length - 1) {
         span.lastmood
          .icon-log 
           img(src='img/moods/#{user.entries[i].mood}.svg', alt="#{user.entries[i].mood} face")
           span #{user.entries[i].mood}
-        - for (var j=0; j<user.entries.length; j++)
-          span.lastact #{user.entries[i].activity[j]}
+        .lastact-container
+         - for (var j=0; j<user.entries[i].activity.length; j++)
+            span.lastact #{user.entries[i].activity[j]}
         span.lastjourn #{user.entries[i].journal}
        - }
       - }

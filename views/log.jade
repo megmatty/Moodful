@@ -11,8 +11,8 @@ block content
       if (entry.date)
        a.entry-date(href= '/log/' + entry.date) #{moment(entry.date).format('lll')}
       .entry-change-buttons
-       a.edit-button.entry-date(href= '/edit/' + entry.date) Edit
-       a.edit-button.entry-date(href= '/delete/' + entry.date) Delete
+       a.btn.edit-button.entry-date(href= '/edit/' + entry.date) Edit
+       a.btn.edit-button.entry-date(href= '/delete/' + entry.date) Delete
      .entry-data
        if (entry.mood)
         span.mood-text
