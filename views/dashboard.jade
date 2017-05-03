@@ -21,17 +21,17 @@ block content
     .dashboard-item-bar
      span Weekly Moods
     .piechart
+      if (user.entries == 0)
+       p You haven't logged any moods yet
       .center
        #container
         input#changeBtn(type='checkbox', onclick='changeBtn(this)', checked='')
         label.switch(for='changeBtn')
           span Switch Chart
-      if (user.entries == 0)
-       p You haven't logged any moods yet
    .dashboard-item-container
     .dashboard-item-bar.date-bar
       if (user.entries == 0)
-       p You haven't logged any moods yet
+       span 
       else
         span.last-entry-date(href= '/log/' + user.entries[user.entries.length - 1].date) #{moment(user.entries[user.entries.length - 1].date).format('lll')} 
       span Last Entry

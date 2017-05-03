@@ -13,9 +13,9 @@ router.get('/', (req, res) => {
 router.post('/register', (req, res, next) => {
     Account.register(new Account({ username : req.body.username, firstName: req.body.firstName }), req.body.password, (err, account) => {
         if (err) {
-          return res.render('register', { error : err.message });
+          return res.render('index', { error : err.message });
         }
-
+//need something to handle registration errors besides returning to '/'
         passport.authenticate('local')(req, res, () => {
             req.session.save((err) => {
                 if (err) {
