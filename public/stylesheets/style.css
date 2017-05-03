@@ -13,13 +13,10 @@ a {
 	text-decoration: none;
 }
 
-h1 {
-	margin:	0;
-}
-
 .container {
 	width: 100%;
-	margin: 0 auto;
+	margin: auto;
+	position: relative;
 }
 
 .navbar {
@@ -29,6 +26,7 @@ h1 {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	width: 100%;
 	background-color: #EEA868;
+	z-index: 99;
 }
 
 .navbar-items {
@@ -37,6 +35,7 @@ h1 {
 	align-items: center;
 	width: 90%;
 	margin: 0 auto;
+	padding: 0 10px;
 }
 
 .navbar a {
@@ -76,13 +75,13 @@ nav a:hover {
 .hero {
 	padding-top: 90px;
 	text-align: center;
-	height: 200px;
+	height: 250px;
 	background: #fff url('/img/mood-bg.png') repeat center;
 }
 
-.name {
+.name, .name-small {
 	font-family: 'Handlee', cursive;
-	color: #52646F;	
+	color: #52646F;
 }
 
 .navbar .name {
@@ -101,14 +100,16 @@ nav a:hover {
 	margin-left: -2.5%;
 }
 
-
+.panel-img {
+	display: none;
+}
 
 #about {
-	background-color: #B79ED7; /*purple*/
+	background-color: #B79ED7; purple
 }
 
 #analyze {
-	background-color: #5DA0BF; /*blue*/
+	background-color: #5DA0BF; blue
 }
 
 #track {
@@ -117,6 +118,7 @@ nav a:hover {
 
 #reg {
 	background-color: #5AB4AE; /*green*/
+	padding-bottom: 150px;
 }
 
 .login-modal {
@@ -188,7 +190,7 @@ nav a:hover {
 }
  
 .register-form button {
-	margin: 5px auto;
+	margin: 20px auto 0;
 	width: 33.3%;
 }
 
@@ -197,12 +199,39 @@ nav a:hover {
 	margin: 0 0 10px 0;
 	height: 30px;
 	border-radius: 5px;
+	width: 60%;
 }
 
 .register-form label {
 	display: inline-block;
 	width: 90px;
 	text-align: left;
+	font-size: .8em;
+}
+
+footer {
+	text-align: center;
+	background-color: #52646F;
+	color: #fff;
+	padding-bottom: 40px;
+	width: 100%;
+	margin: 0 auto;
+	height: 100px;
+	position: absolute;
+	bottom: 0;
+}
+
+footer p {
+	font-size: .7em;
+	margin-top: 20px;
+}
+
+footer a {
+	color: #fff;
+}
+
+footer a:hover {
+	color: #EEA868;
 }
 
 /*Log Entry Card Layout*/
@@ -251,7 +280,7 @@ nav a:hover {
 		align-items: center;
 		margin: 10px 0;
 		width: 100%;
-		padding: 0 5px;
+		padding: 10px 5px;
 	}
 
 	.activity-text, .lastact {
@@ -260,7 +289,7 @@ nav a:hover {
 		color: white;
 		padding: 7.5px;
 		border-radius: 5px;
-		margin: 10px 5px 10px 0;
+		margin: 5px 5px 5px 0;
 		text-align: center;
 	}
 
@@ -278,8 +307,8 @@ nav a:hover {
 
 	.journal {
 		font-size: 0.9em;
-		margin: 0 0 0 15px;
-		padding: 0 5px;
+		margin: 0;
+		padding: 10px 10px 0;
 		line-height: 1.3;
 	}
 
@@ -320,8 +349,30 @@ nav a:hover {
 		color: #fff;
 	}
 
-	.piechart {
-		background-color: #eee;
+	.piechart  {
+		min-height: 320px;
+		margin: 20px 0;
+	}
+
+	.switch {
+		display: block;
+		font-family: 'Handlee', cursive;
+		padding: 10px 0;
+		background-color: #5AB4AE;
+		color: #fff;
+		cursor: pointer;
+		border-radius: 5px;
+		width: 100px;
+		margin: 0 auto;
+	}
+
+	.switch:hover {
+		background-color: #5DA0BF;
+	}
+
+	#container input {
+		position: absolute;
+    	left: -9999px;
 	}
 
 	/*Add new entry*/
@@ -390,6 +441,11 @@ nav a:hover {
 	text-align: center;
 }
 
+.icon-log span {
+	margin: 5px 0;
+	display: block;
+}
+
 .new-entry img {
 	width: 64px;
 }
@@ -400,7 +456,11 @@ nav a:hover {
 
 @media only screen and (min-width: 425px) {
 	.register-form {
-		width: 75%;
+		width: 60%;
+	}
+
+	.login-modal {
+		width: 70%;
 	}
 }
 
@@ -442,7 +502,11 @@ nav a:hover {
 
 	.register-form input {
 		height: 30px;
-		width: 65%;
+		width: 70%;
+	}
+
+	.register-form label {
+		font-size: .9em;
 	}
 
 	.info-panel {
@@ -528,6 +592,43 @@ nav a:hover {
 		margin-bottom: 0;
 	}
 
+	#about, #track, #analyze {
+		width: 100%;
+		margin: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.info-text {
+		width: 65%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		line-height: 1.2;
+	}
+
+	.info-text p {
+		margin: 0;
+	}
+
+	.info-text h3 {
+		margin: 0 0 15px 0;
+	}
+
+	.panel-img {
+		display: block;
+		width: 200px;
+		border-radius: 5px;
+	}
+
+	#track .info-text {
+		align-items: flex-end;
+	}
+
+
+
 }
 
 @media only screen and (min-width: 1024px) {
@@ -536,12 +637,12 @@ nav a:hover {
 		max-width: 1000px;
 	}
 
-	.banner {
-		padding: 100px 0 40px;
+	.name {
+		font-size: 2em;
 	}
 
-	.navbar {
-		padding: 0 60px;
+	.banner {
+		padding: 100px 0 40px;
 	}
 
 	.navbar-items {
@@ -550,17 +651,25 @@ nav a:hover {
 	}
 
 	.login-modal {
-		width: 33.3%;
+		max-width: 350px;
 		padding-left: 60px;
 		padding-right: 60px;
 	}
 
-	.info-panel, #reg {
+	#reg {
 		width: 100%;
 		margin: 0;
 	}
 
-	/*Dashboard Containers*/
+	#about, #track, #analyze {
+		height: 225px;
+	}
+
+	.info-text p {
+		font-size: 1.1em;
+	}
+
+	/*Dashboard*/
 	.dashboard-container {
 		display: flex;
 		flex-wrap: wrap;
@@ -581,6 +690,15 @@ nav a:hover {
 		margin-bottom: 0;
 		flex-basis: 100%;
 		min-height: 100px;
+	}
+
+	.pie text {
+		font-size: 1em;
+		line-height: 1;
+	}
+
+	.lastact, .activity-text {
+		display: block;
 	}
 
 	.new-entry {
@@ -611,6 +729,3 @@ nav a:hover {
 	}
 
 }
-
-
-

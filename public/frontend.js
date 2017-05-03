@@ -26,6 +26,11 @@ $('.new-mood label').click(function(){
     $(this).addClass('selected').siblings().removeClass('selected');
 });
 
+$('.new-mood input').click(function(){
+    $(this).attr('checked', true);
+});
+
+
 
 $('.new-activity label').click(function(){
     $(this).toggleClass('selected');

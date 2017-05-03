@@ -93,11 +93,13 @@ block content
         .icon
          img(src='../img/activities/art.svg', alt="art icon")
          span art
+
        input#chores(class= 'input_hidden', type='checkbox', name='activity[]', value='chores')
        label(for='chores', class=('chores' === entries.activity) ? 'selected' : '')
         .icon 
          img(src='../img/activities/chores.svg', alt="chores icon")
          span chores
+         
        input#computer(class= 'input_hidden', type='checkbox', name='activity[]', value='computer')
        label(for='computer', class=('computer' === entries.activity) ? 'selected' : '')
         .icon 

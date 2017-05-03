@@ -9,7 +9,7 @@ block content
    .entry-card
      .entry-card-bar
       if (entry.date)
-       a.entry-date(href= '/log/' + entry.date) #{moment(entry.date).format('lll')}
+       span.entry-date #{moment(entry.date).format('lll')}
       .entry-change-buttons
        a.btn.edit-button.entry-date(href= '/edit/' + entry.date) Edit
        a.btn.edit-button.entry-date(href= '/delete/' + entry.date) Delete

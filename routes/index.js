@@ -4,15 +4,9 @@ const Account = require('../models/account');
 const router = express.Router();
 
 
-
 //GET /
 router.get('/', (req, res) => {
     res.render('index', { user : req.user });
-});
-
-//GET /register
-router.get('/register', (req, res) => {
-    res.render('register', { });
 });
 
 //POST /register
@@ -32,7 +26,6 @@ router.post('/register', (req, res, next) => {
         });
     });
 });
-
 
 //GET /login
 router.get('/login', (req, res) => {
@@ -65,30 +58,25 @@ router.get('/ping', (req, res) => {
 
 //GET /log
 router.get('/log', (req, res) => {
+    if (!req.user) {
+      res.redirect('/');
+    }
     res.render('log', {user : req.user });
 });
 
 //GET /addEntry
 router.get('/addEntry', (req, res) => {
+    if (!req.user) {
+      res.redirect('/');
+    }
     res.render('addEntry', {user : req.user });
-});
-
-//GET /log/:date
-router.get('/log/:date', (req, res) => {
-    Account 
-      .find({_id : req.user.id},{entries: {$elemMatch: {date: Number(req.params.date)}}})
-      .exec() 
-      .then(user => {
-        //need a way to render only this one entry
-        // res.render('log', {user : req.user, entries: user[0].entries[0] });
-        res.send('placeholder for ' + user[0].entries[0].date);
-      }) 
-      .catch(err => { console.error(err); 
-    res.status(500).redirect('/log'); });
 });
 
 //GET /editEntry
 router.get('/edit/:date', (req, res) => {
+    if (!req.user) {
+      res.redirect('/');
+    }
     Account 
       .find({_id : req.user.id},{entries: {$elemMatch: {date: Number(req.params.date)}}})
       .exec() 
@@ -99,27 +87,46 @@ router.get('/edit/:date', (req, res) => {
     res.status(500).redirect('/log'); });
 });
 
-//Get Pie chart data
-function getPieData (req) {
-  var obj = {};
-  for (var i = 0; i < req.user.entries.length; i++) {
-    var key = req.user.entries[i].mood;
-    console.log(key);
-    if (key in obj) {
-      console.log(key + 'repeat');
-      obj[key]++;
-    } else {
-      obj[key] = 1;
+
+//Sprout pie data
+function moodData(req){
+    var arr = [];
+    for (var i = 0; i < req.user.entries.length; i++) {
+        var key = req.user.entries[i].mood;
+
+        console.log(key);
+        for(var j = 0; j < arr.length; j++){
+            var obj = arr[j]
+            console.log(obj);
+
+            if (obj.name == key) {
+
+                console.log('repeat');
+                obj['value']++;
+                break;
+            }
+        }
+        if (j == arr.length || arr.length == 0) {
+            var obj = {};  
+            obj['name'] = key;
+            obj['value'] = 1;
+            arr.push(obj)
+        }
     }
-  }
-  return obj;
+    console.log(arr)
+    return arr;
 }
+
 
 //GET /dashboard
 router.get('/dashboard', (req, res) => {
-    let obj = getPieData(req);
-    res.render('dashboard', {user : req.user, data : obj });
+    if (!req.user) {
+      res.redirect('/');
+    }
+    let arr = moodData(req)
+    res.render('dashboard', {user : req.user, data : arr });
 });
+
 
 //POST /addEntry
 router.post('/addEntry', (req, res) => {
@@ -167,6 +174,9 @@ router.post('/edit/:date', (req, res) => {
 //GET /delete/:date
   //use warning box modal w/jquery
 router.get('/delete/:date', (req, res) => {
+    if (!req.user) {
+      res.redirect('/');
+    }
     Account
       .findById(req.user.id)
       .update(

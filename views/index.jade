@@ -5,16 +5,22 @@ block content
  .container
   .hero 
     h1.name Moodful
-    h3.name the mindful mood tracker
+    h3.name-small the mindful mood tracker
   #about.info-panel
+   .info-text
     h3 What is Moodful?
     p Moodful is way for you to track and analyze your moods while using some basic mindfulness principles. Mindfulness means focusing your mind to be fully present and aware of where you are and what you’re doing, without being overly reactive to what's going on around you.
+   img.panel-img(src='/img/meditation.png' alt='woman meditating')
   #track.info-panel
+   img.panel-img(src='/img/track.png' alt='checklist')
+   .info-text
     h3 Track your daily moods
     p Logging your moods daily will help you track and monitor your emotions. Over time, you can become more aware of your feelings and what things might affect them. Moodful offers a simple interface for creating a record of your mood, daily activities, and your thoughts about the day.
   #analyze.info-panel
+   .info-text 
     h3 Analyze your entries
-    p In addition to reviewing your log entries, Moodful provides a monthly "mood cloud" of your mood keywords, a weekly pie chart breakdown of your moods, and your last entry displayed to reflect upon. Reviewing this information can further help you gain awareness of how you feel over time.
+    p In addition to displaying your log entries, Moodful provides a monthly "mood cloud", a weekly pie chart breakdown of your moods, and displays your last entry for your personal reflection. Reviewing this information can further help you gain awareness of how you feel over time.
+   img.panel-img(src='/img/analyze.png' alt='bar chart with face')
   #reg.info-panel-reg
     h3 Register
     p Start tracking your moods today!
@@ -39,7 +45,7 @@ block content
       br
       a(href='/')
         button.btn.login-cancel-btn(type="button") Cancel
-
+  include footer
 
 
 

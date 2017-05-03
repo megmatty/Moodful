@@ -13,16 +13,27 @@ block content
     .moodcloud
      if (user.entries == 0)
       p You haven't logged any moods yet
+     else 
+       each d in data
+        p
+          span(style="font-size:#{d.value}em;") #{d.name}
    .dashboard-item-container
     .dashboard-item-bar
      span Weekly Moods
     .piechart
+      .center
+       #container
+        input#changeBtn(type='checkbox', onclick='changeBtn(this)', checked='')
+        label.switch(for='changeBtn')
+          span Switch Chart
       if (user.entries == 0)
        p You haven't logged any moods yet
    .dashboard-item-container
     .dashboard-item-bar.date-bar
-      if (user.entries[user.entries.length - 1].date)
-       a.last-entry-date(href= '/log/' + user.entries[user.entries.length - 1].date) #{moment(user.entries[user.entries.length - 1].date).format('lll')} 
+      if (user.entries == 0)
+       p You haven't logged any moods yet
+      else
+        span.last-entry-date(href= '/log/' + user.entries[user.entries.length - 1].date) #{moment(user.entries[user.entries.length - 1].date).format('lll')} 
       span Last Entry
     .entry-data
      if (user.entries == 0)
