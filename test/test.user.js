@@ -2,7 +2,7 @@ const should = require("should");
 const mongoose = require('mongoose');
 const Account = require("../models/account.js");
 
-describe('Account created', () => {
+describe('Account access', () => {
 
     before((done) => {
         const db = mongoose.connect('mongodb://localhost/test');
@@ -27,13 +27,14 @@ describe('Account created', () => {
         });
     });
 
-    it('find a user by username', (done) => {
+    it('Find a user by username', (done) => {
         Account.findOne({ username: '12345' }, (err, account) => {
             account.username.should.eql('12345');
             console.log("   username: ", account.username);
             done();
         });
     });
+
 
     afterEach((done) => {
         Account.remove({}, () => {
@@ -42,3 +43,14 @@ describe('Account created', () => {
      });
 
 });
+
+
+
+
+
+
+
+
+
+
+

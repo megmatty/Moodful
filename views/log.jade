@@ -5,7 +5,7 @@ block content
  .container
   .banner
     h1 #{user.firstName}'s Mood Log 
-  each entry in user.entries
+  each entry in user.entries.reverse()
    .entry-card
      .entry-card-bar
       if (entry.date)

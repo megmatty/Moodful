@@ -14,7 +14,7 @@ function SproutChart(target, options) {
 	{name: 'Stuart', value: 3},
 	{name: 'Gru', value: 5}
 	];
-	sc.size = options.size || 280; // svg container size, idealy equals to twice of rHover + max(spaceHover, spaceActive)
+	sc.size = options.size || 300; // svg container size, idealy equals to twice of rHover + max(spaceHover, spaceActive)
 	sc.duration = options.duration || 1000; // transition duration of the first time draw the pie chart
 	sc.easing = options.easing || 'cubic-in-out'; // transition easing function, same as d3 easing
 	sc.materialColor = [
@@ -501,27 +501,6 @@ SproutChart.prototype.transformTo = function(type, options, callback) {
 				return sc;
 };
 
-
-// inject to target DOM
-/*var chart = new SproutChart(document.getElementById('container'), [{
-	name: 'apple',
-    value: 10
-}, {
-	name: 'orange',
-    value: 13
-}, {
-	name: 'watermelon',
-    value: 3
-}, {
-	name: 'banana',
-    value: 12
-}, {
-	name: 'cherry',
-    value: 8
-}, {
-	name: 'others',
-    value: 9
-}]);*/
 
 var chart = new SproutChart(document.getElementById('container'), local_data)
 

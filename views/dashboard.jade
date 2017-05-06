@@ -1,5 +1,5 @@
 extends layout
-
+ 
 block content
  include nav
  .container
@@ -15,7 +15,7 @@ block content
       p You haven't logged any moods yet
      else 
        each d in data
-        p
+        p.cloud
           span(style="font-size:#{d.value}em;") #{d.name}
    .dashboard-item-container
     .dashboard-item-bar

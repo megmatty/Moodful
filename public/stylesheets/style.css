@@ -2,7 +2,6 @@
 	box-sizing: border-box;
 }
 
-
 body {
 	font-family: 'Lato', sans-serif;
 	margin: 0;
@@ -17,6 +16,7 @@ a {
 	width: 105%;
 	margin: 0 -2.5%;
 	position: relative;
+	overflow: hidden;
 }
 
 .navbar {
@@ -85,21 +85,21 @@ nav a:hover {
 	background: #fff url('/img/mood-bg.png') repeat center;
 }
 
-.name, .name-small {
+.brand, .brand-small {
 	font-family: 'Handlee', cursive;
 	color: #52646F;
 }
 
-.navbar .name {
+.navbar .brand {
 	color: #fff;
 }
 
-.navbar .name:hover {
+.navbar .brand:hover {
 	color: #52646F;
 }
 
 .info-panel, #reg {
-	padding: 20px;
+	padding: 20px 7.5%;
 	text-align: center;
 	color: #fff;
 	width: 105%;
@@ -242,14 +242,10 @@ footer a:hover {
 
 /*Log Entry Card Layout*/
 	.entry-card {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
 		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-		margin: 0 15px 15px;
 		border-radius: 5px;
 		width: 90%;
-		margin: 0 auto;
+		margin: 0 auto 10px;
 	}
 
 	.entry-card-bar {
@@ -286,7 +282,6 @@ footer a:hover {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin: 10px 0;
 		width: 100%;
 		padding: 10px 5px;
 	}
@@ -321,12 +316,13 @@ footer a:hover {
 	}
 
 	.lastjourn {
-		padding: 10px 10px 20px;
+		padding: 10px;
 	}
 
 /*Dashboard Containers*/
 	.dashboard-container {
 		display: block;
+		margin: 0 5px;
 	}
 
 	.dashboard-item-container {
@@ -335,7 +331,6 @@ footer a:hover {
 		background-color: #fff;
 		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 		border-radius: 5px;
-		min-height: 200px;
 	}
 
 	.dashboard-item-bar {
@@ -471,6 +466,55 @@ footer a:hover {
 	width: 50px;
 }
 
+.moodcloud {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	min-height: 200px;
+	padding: 20px;
+}
+
+.cloud {
+	display: inline-block;
+	padding: 5px;
+	font-weight: bold;
+	color: #52646F;
+	margin: 0;
+}
+
+.cloud:nth-child(2n) {
+	color: #B79ED7;
+}
+
+.cloud:nth-child(3n) {
+	color: #EEA868;
+}
+
+.cloud:nth-child(4n) {
+	color: #5DA0BF;
+}
+
+.cloud:nth-child(4n) {
+	color: #5AB4AE;
+}
+
+.error-msg {
+	text-align: center;
+	font-size: 1em;
+	z-index: 100000;
+	background-color: #EE7468;
+	color: #fff;
+	position: fixed;
+	top: 10vh;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	height: auto;
+	padding: 10px;
+	max-width: 1100px;
+}
+
 @media only screen and (min-width: 425px) {
 	.register-form {
 		width: 60%;
@@ -553,7 +597,6 @@ footer a:hover {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		width: 90%;
 		margin: 0 auto;
 	}
 
@@ -562,7 +605,7 @@ footer a:hover {
 		margin: 0 auto 40px;
 	}
 
-	.lastmood, .lastact-container {
+	.lastact-container {
 		margin-right: 30px;
 	}
 
@@ -592,8 +635,7 @@ footer a:hover {
 
 	.entry-data {
 		flex-direction: row;
-		justify-content: space-between;
-		padding: 0 20px;
+		padding: 20px;
 	}
 
 	.icon-log {
@@ -607,10 +649,7 @@ footer a:hover {
 
 	.journal {
 		min-width: 70%;
-	}
-
-	.journal {
-		padding: 10px 0 0 25px;
+		padding: 0 0 0 25px;
 	}
 
 
@@ -657,11 +696,25 @@ footer a:hover {
 		align-items: flex-end;
 	}
 
+	.moodcloud {
+		padding: 50px 75px;
+	}
+
+	.error-msg {
+		top: 6vh;
+	}
+
 }
 
 @media only screen and (min-width: 1024px) {
 
-	.name {
+	.container {
+		width: 100%;
+		overflow: visible;
+		margin: 0 auto;
+	}
+
+	.brand {
 		font-size: 3em;
 	}
 
@@ -707,11 +760,13 @@ footer a:hover {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
+		width: 90%;
 	}
 
 	.dashboard-item-container {
 		width: 49%;
 		margin: 0 1% 20px 0;
+		position: relative;
 	}
 
 	.dashboard-item-container:nth-child(2) {
@@ -726,7 +781,7 @@ footer a:hover {
 	}
 
 	.pie .name {
-		font-size: 1em;
+		font-size: 1.1em;
 		line-height: 1;
 	}
 
@@ -768,11 +823,19 @@ footer a:hover {
 
 	.journal {
 		font-size: 1em;
-		padding: 10px 0 0 40px;
 	}
 
 	.icon-log {
 		margin-right: 40px;
+	}
+
+	.moodcloud {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 75px 100px 50px;
 	}
 
 }

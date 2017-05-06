@@ -27,11 +27,7 @@ router.post('/register', (req, res, next) => {
     });
 });
 
-//GET /login
-router.get('/login', (req, res) => {
-    res.render('index', { user : req.user, error : req.flash('error')});
-});
-
+//POST LOGIN
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
     req.session.save((err) => {
         if (err) {
