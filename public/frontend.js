@@ -32,6 +32,7 @@ $('.new-mood input').click(function(){
 
 
 
+
 $('.new-activity label').click(function(){
     $(this).toggleClass('selected');
 

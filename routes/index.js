@@ -1,6 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 const Account = require('../models/account');
+const Entry = require('../models/entry');
+
 const router = express.Router();
 
 
@@ -65,7 +67,19 @@ router.get('/addEntry', (req, res) => {
     if (!req.user) {
       res.redirect('/');
     }
-    res.render('addEntry', {user : req.user });
+
+    Entry
+	.findOne()
+	.exec()
+	.then(entry => {
+	        res.render('addNew', {user : req.user, moods: entry.moods, activities:entry.activities});
+		
+   	 })
+    //var moods = [	{name:'happy'},{name:'sad'},{name:'amused'} ]
+
+	//[{name:'art'},{name:'games'},{name:'read'},{name:'nap'} ]
+
+
 });
 
 //GET /editEntry
@@ -77,12 +91,41 @@ router.get('/edit/:date', (req, res) => {
       .find({_id : req.user.id},{entries: {$elemMatch: {date: Number(req.params.date)}}})
       .exec() 
       .then(user => {
-        res.render('edit', {user : req.user, entries: user[0].entries[0] });
+
+       Entry
+	.findOne()
+	.exec()
+	.then(entry => {
+	        //res.render('addNew', {user : req.user, moods: entry.moods, activities:entry.activities});
+		var mood = user[0].entries[0].mood; 
+		var allMoods = entry.moods; 
+		//console.log(repeatMood(allMoods, mood))
+		console.log('get');
+		console.log(req.body);
+
+		
+	        res.render('editNew', {user : req.user, entries: user[0].entries[0], moods:entry.moods, activities:entry.activities, mood:mood });
+		
+   	 })
+		
+
+
+        //res.render('editNew', {user : req.user, entries: user[0].entries[0] });
       }) 
       .catch(err => { console.error(err); 
     res.status(500).redirect('/log'); });
 });
 
+
+function repeatMood(allMoods, mood){
+		for(var a=0; a<allMoods.length; a++){
+			if(allMoods[a].name == mood){
+				console.log(mood) 
+				return mood; 
+			}
+		}	
+		return null;  	
+}
 
 //Sprout pie data
 function moodData(req){
@@ -126,6 +169,9 @@ router.get('/dashboard', (req, res) => {
 
 //POST /addEntry
 router.post('/addEntry', (req, res) => {
+	console.log('body')
+	console.log(req.body);
+
     Account 
       .findById(req.user.id)
       .exec() 
@@ -137,7 +183,6 @@ router.post('/addEntry', (req, res) => {
             'journal': req.body.journal
         });
         user.save();
-        console.log(req.body.entry);
         res.redirect('/log');
       }) 
       .catch(err => { console.error(err); 
@@ -146,6 +191,9 @@ router.post('/addEntry', (req, res) => {
 
 // POST /edit/:date
 router.post('/edit/:date', (req, res) => {
+	console.log('post');
+	console.log(req.body);
+
     Account
       .findById(req.user.id)
       .update(

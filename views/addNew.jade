@@ -1,0 +1,41 @@
+extends layout
+
+block content
+ include nav
+ .container
+  .banner
+    h1 s Add New Entry
+    p Instructions : 
+    p Try to complete your log when you know that you will not be disturbed. When you are ready, sit however you are comfortable and close your eyes. Take slow, steady breaths, focusing on the sound of your breathing in and out. Notice any tension in your body and release it. As you breathe, you may find thoughts attempting to surface...about your day, your worries, the past. Pop each thought as it arises like a bubble and let it go, continuing to concentrate on your breathing. Then slowly focus your mind on how your feel 
+     em right now. 
+    span When you feel calm and centered, open your eyes and make your log entry. Try to log only the information that's most important to you, rather than logging everything.
+  .new-entry-container
+    form.new-entry(role='form', action='/addEntry', method='post')
+      fieldset.new-mood
+       legend Mood
+       p How are you feeling right now?
+       each e in moods
+        input(id='#{e.name}' class= 'input_hidden', type='radio', name='mood', value='#{e.name}')
+        label(for='#{e.name}')
+         .icon
+           img(src='img/moods/#{e.name}.svg', alt="#{e.name} face")
+           span #{e.name}
+    
+      fieldset.new-activity
+       legend Activity
+       p What activities were your main focus today?
+       each a in activities
+        input(id='#{a.name}' class= 'input_hidden', type='checkbox', name='activity[]', value='#{a.name}')
+        label(for='#{a.name}')
+         .icon 
+          img(src='img/activities/#{a.name}.svg', alt="art icon")
+          span #{a.name}
+
+      fieldset.new-journal
+       legend Journal
+       p What thoughts are foremost in your mind right now?
+       textarea(type='text', name='journal', placeholder='Add Journal')
+
+      button.btn(type='submit') Submit
+
+
