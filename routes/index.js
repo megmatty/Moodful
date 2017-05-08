@@ -100,8 +100,10 @@ router.get('/edit/:date', (req, res) => {
 		var mood = user[0].entries[0].mood; 
 		var allMoods = entry.moods; 
 		//console.log(repeatMood(allMoods, mood))
+		console.log(entry.activities)
 		console.log('get');
-		console.log(req.body);
+		console.log(user[0].entries[0].activity)
+		//console.log(req.body);
 
 		
 	        res.render('editNew', {user : req.user, entries: user[0].entries[0], moods:entry.moods, activities:entry.activities, mood:mood });

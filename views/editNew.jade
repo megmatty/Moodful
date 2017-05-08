@@ -19,12 +19,18 @@ block content
             span #{e.name}  
       fieldset.new-activity
        each a in activities
-         input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=('#{a.name}'==='#{mood}' ? "checked" : undefined)) 
-         label(for='#{a.name}' class="#{a.name===mood ? 'selected' : ''}")
-          .icon
-            img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
-            span #{a.name}  
-
+        if entries.activity
+          input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=('#{entries.activity.indexOf(Object.values(a).toString())}' > -1 ? "checked" : undefined  )) 
+          label(for='#{a.name}' class="#{ entries.activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : ''}")
+           .icon
+             img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
+             span #{a.name}  
+        else 
+          input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}') 
+          label(for='#{a.name}')
+           .icon
+             img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
+             span #{a.name}  
 
       fieldset.new-journal
        legend Journal
