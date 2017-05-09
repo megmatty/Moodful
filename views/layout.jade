@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title= title
+    title= "Moodful"
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css')
     link(href="https://fonts.googleapis.com/css?family=Handlee|Lato:300,700" rel="stylesheet")
@@ -14,9 +14,6 @@ html
 
     block content
 
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-  script(type='text/javascript').
-    var local_data =!{JSON.stringify(data)}
-  script(src='../d3.v3.min.js')
-  script(src='/sproutChart.js')
-  script(src='/frontend.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    block dashScripts
+    script(src='/frontend.js')

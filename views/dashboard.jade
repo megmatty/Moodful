@@ -51,3 +51,9 @@ block content
         span.lastjourn #{user.entries[i].journal}
        - }
       - }
+block dashScripts
+  script(type='text/javascript').
+    var local_data =!{JSON.stringify(data)}
+  script(src='../d3.v3.min.js')
+  script(src='/sproutChart.js')
+

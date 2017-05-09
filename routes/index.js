@@ -15,7 +15,7 @@ router.post('/register', (req, res, next) => {
         if (err) {
           return res.render('index', { error : err.message });
         }
-//need something to handle registration errors besides returning to '/'
+
         passport.authenticate('local')(req, res, () => {
             req.session.save((err) => {
                 if (err) {
