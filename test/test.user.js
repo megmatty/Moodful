@@ -10,6 +10,9 @@ describe('Account access', () => {
     });
 
     after((done) => {
+        // Account.remove({}, () => {
+        //     done();
+        // });
         mongoose.connection.close();
         done();
     });
@@ -35,22 +38,27 @@ describe('Account access', () => {
         });
     });
 
-
-    afterEach((done) => {
-        Account.remove({}, () => {
-            done();
+    it('Adds an entry', (done) => {
+       Account 
+      .update({ username: '12345' })
+      .exec() 
+      .then(user => { 
+        user.entries.push({
+            'date': Date.now(),
+            'mood': 'Happy',
+            'activity': 'Running',
+            'journal': 'Test'
         });
-     });
-
+        user.save();
+        done();
+    });
 });
 
 
+    afterEach((done) => {
+        // Account.remove({}, () => {
+        //     done();
+        // });
+     });
 
-
-
-
-
-
-
-
-
+});

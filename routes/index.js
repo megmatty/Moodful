@@ -67,11 +67,12 @@ router.get('/addEntry', (req, res) => {
     if (!req.user) {
       res.redirect('/');
     }
-
+    console.log(req.body);
     Entry
 	.findOne()
 	.exec()
 	.then(entry => {
+    console.log(entry);
 	        res.render('addNew', {user : req.user, moods: entry.moods, activities:entry.activities});
 		
    	 })
@@ -132,7 +133,8 @@ function repeatMood(allMoods, mood){
 //Sprout pie data
 function moodData(req){
     var arr = [];
-    for (var i = 0; i < req.user.entries.length; i++) {
+    for (var i = req.user.entries.length - 1; i > req.user.entries.length - 8; i--) {
+    // for (var i = 0; i < req.user.entries.length; i++) {
         var key = req.user.entries[i].mood;
 
         console.log(key);
