@@ -1,9 +1,10 @@
 const express = require('express');
 const passport = require('passport');
-const Account = require('../models/account');
+const {Account} = require('../models/account');
 const Entry = require('../models/entry');
 
 const router = express.Router();
+const app = express();
 
 
 //GET /
@@ -11,9 +12,12 @@ router.get('/', (req, res) => {
     res.render('index', { user : req.user });
 });
 
+
 //POST /register
 router.post('/register', (req, res, next) => {
     Account.register(new Account({ username : req.body.username, firstName: req.body.firstName }), req.body.password, (err, account) => {
+	    console.log(req.body);
+	    
         if (err) {
           return res.render('index', { error : err.message });
         }
@@ -23,11 +27,14 @@ router.post('/register', (req, res, next) => {
                 if (err) {
                     return next(err);
                 }
+		console.log(req.body); 
                 res.redirect('/dashboard');
             });
         });
     });
 });
+
+
 
 //POST LOGIN
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
@@ -132,9 +139,12 @@ function repeatMood(allMoods, mood){
 
 //Sprout pie data
 function moodData(req){
+
+	console.log('in mood');
+	console.log(req.body)
     var arr = [];
-    for (var i = req.user.entries.length - 1; i > req.user.entries.length - 8; i--) {
-    // for (var i = 0; i < req.user.entries.length; i++) {
+    //for (var i = req.user.entries.length - 1; i > req.user.entries.length - 8; i--) {
+     for (var i = 0; i < req.user.entries.length; i++) {
         var key = req.user.entries[i].mood;
 
         console.log(key);
@@ -165,6 +175,7 @@ function moodData(req){
 router.get('/dashboard', (req, res) => {
     if (!req.user) {
       res.redirect('/');
+      return
     }
     let arr = moodData(req)
     res.render('dashboard', {user : req.user, data : arr });
@@ -244,4 +255,6 @@ router.get('/delete/:date', (req, res) => {
 
 
 
-module.exports = router;
+///module.exports = router;
+var routes = router;
+module.exports = {routes, app};

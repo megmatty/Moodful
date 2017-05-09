@@ -1,4 +1,4 @@
-const should = require("should");
+/*const should = require("should");
 const mongoose = require('mongoose');
 const Account = require("../models/account.js");
 
@@ -61,4 +61,5 @@ describe('Account access', () => {
         // });
      });
 
-});
+});*/
+
