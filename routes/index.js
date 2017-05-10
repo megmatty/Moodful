@@ -37,7 +37,7 @@ router.post('/register', (req, res, next) => {
 
 
 //POST LOGIN
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
+router.post('/login', passport.authenticate('local'), (req, res, next) => { //, { failureRedirect: '/login', failureFlash: true }s
     req.session.save((err) => {
         if (err) {
             return next(err);
@@ -79,7 +79,7 @@ router.get('/addEntry', (req, res) => {
 	.findOne()
 	.exec()
 	.then(entry => {
-    console.log(entry);
+    		console.log(entry);
 	        res.render('addNew', {user : req.user, moods: entry.moods, activities:entry.activities});
 		
    	 })
@@ -138,6 +138,21 @@ function repeatMood(allMoods, mood){
 }
 
 //Sprout pie data
+//
+/*	"firstName" : "a",
+	"entries" : [
+		{
+			"date" : 1494352851099,
+			"mood" : "happy",
+			"activity" : [
+				"art",
+				"games"
+			],
+			"journal" : "sup"
+		}
+	],
+*/
+
 function moodData(req){
 
 	console.log('in mood');
@@ -179,6 +194,29 @@ router.get('/dashboard', (req, res) => {
     }
     let arr = moodData(req)
     res.render('dashboard', {user : req.user, data : arr });
+});
+
+
+
+//GET /socialDash
+router.get('/social_dashboard', (req, res) => {
+
+    if (!req.user) {
+      res.redirect('/');
+      return
+    }
+    Entry
+	.findOne()
+	.exec()
+	.then(entry => {
+		console.log('this is it');
+		console.log(entry)
+	})
+
+
+    let arr = moodData(req)
+
+    res.render('socialDash', {user : req.user, data : arr });
 });
 
 
@@ -236,6 +274,7 @@ router.get('/delete/:date', (req, res) => {
     if (!req.user) {
       res.redirect('/');
     }
+
     Account
       .findById(req.user.id)
       .update(

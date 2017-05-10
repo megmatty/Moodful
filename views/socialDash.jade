@@ -1,0 +1,54 @@
+extends layout
+ 
+block content
+ include nav
+ .container
+  .banner
+   h1 #{user.firstName}'s  social_dashboard
+
+  .dashboard-container
+   .dashboard-item-container
+    .dashboard-item-bar 
+     span Monthly Moodcloud
+    .moodcloud
+     if (user.entries == 0)
+      p You haven't logged any moods yet
+     else 
+       each d in data
+        p.cloud
+          span(style="font-size:#{d.value}em;") #{d.name}
+   .dashboard-item-container
+    .dashboard-item-bar
+     span Weekly Moods
+    .piechart
+      if (user.entries == 0)
+       p You haven't logged any moods yet
+      .center
+       #container
+        input#changeBtn(type='checkbox', onclick='changeBtn(this)', checked='')
+        label.switch(for='changeBtn')
+          span Switch Chart
+   .dashboard-item-container
+    .dashboard-item-bar.date-bar
+      if (user.entries == 0)
+       span 
+      else
+        span.last-entry-date(href= '/log/' + user.entries[user.entries.length - 1].date) #{moment(user.entries[user.entries.length - 1].date).format('lll')} 
+      span Last Entry
+    .entry-data
+     if (user.entries == 0)
+      p You haven't logged any moods yet
+     else
+      - for (var i=0; i<user.entries.length; i++) {
+       - if (i === user.entries.length - 1) {
+        span.lastmood
+         .icon-log 
+          img(src='img/moods/#{user.entries[i].mood}.svg', alt="#{user.entries[i].mood} face")
+          span #{user.entries[i].mood}
+        .lastact-container
+         - for (var j=0; j<user.entries[i].activity.length; j++)
+            span.lastact #{user.entries[i].activity[j]}
+        span.lastjourn #{user.entries[i].journal}
+       - }
+      - }
+
