@@ -1,100 +1,3 @@
-/*
-// dependencies
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var flash = require('connect-flash');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-
-const {PORT, DATABASE_URL} = require('./config');
-console.log(PORT, DATABASE_URL)
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
-var app = express();
-app.locals.home = true;
-app.locals.moment = require('moment');
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-// app.set('views', './views');
-app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(require('express-session')({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore( {mongooseConnection:mongoose.connection})
-}));
-// maxAge: new Date(Date.now() + 3600000),
-
-app.use(passport.initialize());
-app.use(flash());
-app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-app.use('/', routes);
-
-
-// passport config
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
-
-// mongoose
-// mongoose.connect('mongodb://localhost/moodful-data');
-mongoose.connect(DATABASE_URL);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
-
-module.exports = app;*/
-
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -125,28 +28,32 @@ app.use(passport.session());
 app.use('/', routes);
 app.locals.moment = require('moment');
 
+function checked(a, activity) {
+  // console.log(activity, "anything");
+  // return activity.indexOf(Object.values(a).toString()) > -1 ? "checked" : undefined;
+  return undefined;
+}
+
+function selected(a, activity) {
+  console.log("LOG ANYTHING");
+  return 1;
+  return activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : '';
+}
+//'#{entries.activity.indexOf(Object.values(a).toString())}' > -1 ? "checked" : undefined  )
+//#{ entries.activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : ''}
+app.locals.checked = checked;
+app.locals.selected = selected;
+
+
+
+
+
 mongoose.Promise = global.Promise;
 
 passport.use(new LocalStrategy({usernameField: 'username'}, Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
-/*
-function matchesWon(matches) {
-  let won = 0;
-  let lost = 0;
-  matches.forEach(match => {
-    if (match.matchWon) {
-      won++;
-    }
-    else {
-      lost++;
-    }
-  })
-  return `${won} - ${lost}`;
-}
 
-app.locals.matchesWon = matchesWon;
-*/
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
