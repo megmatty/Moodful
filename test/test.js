@@ -78,7 +78,7 @@ describe('Tests', function() {
 							describe('user exist', () => {
 								it('user should have mood', () => {
 
-									user.entries[0].mood.should.not.have.length(5);
+									user.entries[0].mood.should.not.have.length(0);
 								})
 							})
 						})
