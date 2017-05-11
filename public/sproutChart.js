@@ -9,11 +9,11 @@ function SproutChart(target, options) {
 	} : options || {};
 
 	sc.data = options.data || [
-	// {name: 'Kevin', value: 8},
-	// {name: 'Bob', value: 8},
-	// {name: 'Stuart', value: 3},
-	// {name: 'Gru', value: 5}
-	// ];
+	{name: 'Kevin', value: 8},
+	{name: 'Bob', value: 8},
+	{name: 'Stuart', value: 3},
+	{name: 'Gru', value: 5}
+	];
 	sc.size = options.size || 300; // svg container size, idealy equals to twice of rHover + max(spaceHover, spaceActive)
 	sc.duration = options.duration || 1000; // transition duration of the first time draw the pie chart
 	sc.easing = options.easing || 'cubic-in-out'; // transition easing function, same as d3 easing
