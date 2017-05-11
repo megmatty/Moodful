@@ -11,21 +11,22 @@ block content
     form.new-entry(role='form', action='/edit/' + '#{entries.date}', method='post')
       fieldset.new-mood
        legend Mood
-        each e in moods
+       each e in moods
          input(id='#{e.name}', type='radio',  class= 'input_hidden', name='mood', value='#{e.name}' checked=('#{e.name}'==='#{mood}' ? "checked" : undefined)) 
          label(for='#{e.name}' class="#{e.name===mood ? 'selected' : ''}")
           .icon
             img(src='../img/moods/#{e.name}.svg', alt="#{e.name} face")
             span #{e.name}  
       fieldset.new-activity
+       legend Activity
        each a in activities
-        if entries.activity
+         if entries.activity
           input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=('#{entries.activity.indexOf(Object.values(a).toString())}' > -1 ? "checked" : undefined  )) 
           label(for='#{a.name}' class="#{ entries.activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : ''}")
            .icon
              img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
              span #{a.name}  
-        else 
+         else 
           input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}') 
           label(for='#{a.name}')
            .icon

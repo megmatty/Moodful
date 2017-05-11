@@ -21,7 +21,7 @@ $("#nav-toggle").click(function(){
   });
 });
 
-//Emotion Buttons
+//Emotion-Activity Buttons
 $('.new-mood label').click(function(){
     $(this).addClass('selected').siblings().removeClass('selected');
 });
@@ -30,14 +30,7 @@ $('.new-mood input').click(function(){
     $(this).attr('checked', true);
 });
 
-
-
-
 $('.new-activity label').click(function(){
     $(this).toggleClass('selected');
-
 });
-
-//put on delete button
-//confirm("Press a button!");
 

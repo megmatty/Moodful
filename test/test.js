@@ -135,7 +135,7 @@ describe('Tests', function() {
 							describe('check edit', () => {
 								it('mood should equal value', () => {
 	
-									user.entries[0].mood.should.eql('amusedd');
+									user.entries[0].mood.should.eql('amused');
 								})
 							})
 

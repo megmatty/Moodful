@@ -355,6 +355,11 @@ footer a:hover {
 	.piechart  {
 		min-height: 320px;
 		margin: 20px 0;
+		font-family: 'Handlee', cursive;
+	}
+
+	.bar text {
+		font-family: 'Handlee', cursive;
 	}
 
 	.switch {
@@ -611,6 +616,7 @@ footer a:hover {
 	}
 
 	.lastact, .activity-text {
+		display: block;
 		margin-right: 0;
 	}
 
@@ -781,13 +787,9 @@ footer a:hover {
 		min-height: 100px;
 	}
 
-	.pie .name {
+	.pie .name, .bar .name {
 		font-size: 1.1em;
 		line-height: 1;
-	}
-
-	.lastact, .activity-text {
-		display: block;
 	}
 	
 	.new-entry-container {

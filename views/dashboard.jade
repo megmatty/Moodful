@@ -9,7 +9,7 @@ block content
   .dashboard-container
    .dashboard-item-container
     .dashboard-item-bar 
-     span Monthly Moodcloud
+     span Moodcloud
     .moodcloud
      if (user.entries == 0)
       p You haven't logged any moods yet
@@ -51,4 +51,8 @@ block content
         span.lastjourn #{user.entries[i].journal}
        - }
       - }
-
+block dashScripts
+  script(type='text/javascript').
+    var local_data =!{JSON.stringify(data)}
+  script(src='../d3.v3.min.js')
+  script(src='/sproutChart.js')
