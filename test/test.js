@@ -194,12 +194,7 @@ describe('Tests', function() {
 						.then(user => {
 							describe('check delete', () => {
 								it('mood should equal value', () => {
-	
-									console.log(user);
-									console.log('2')
-									
-									console.log(user.entries.length);
-									user.entries.length.should.equal(2)
+									user.entries.length.should.equal(0)
 								
 								
 								})
