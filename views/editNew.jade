@@ -21,8 +21,8 @@ block content
        legend Activity
        each a in activities
          if entries.activity
-          input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=('#{entries.activity.indexOf(Object.values(a).toString())}' > -1 ? "checked" : undefined  )) 
-          label(for='#{a.name}' class="#{ entries.activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : ''}")
+          //- input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=('#{entries.activity.indexOf(Object.values(a).toString())}' > -1 ? "checked" : undefined  )) 
+          //- label(for='#{a.name}' class="#{ entries.activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : ''}")
            .icon
              img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
              span #{a.name}  
