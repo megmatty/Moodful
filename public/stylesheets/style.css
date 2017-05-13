@@ -14,10 +14,8 @@ a {
 }
 
 .container {
-	width: 105%;
-	margin: 0 -2.5%;
 	position: relative;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 .navbar {
@@ -103,8 +101,6 @@ nav a:hover {
 	padding: 20px 7.5%;
 	text-align: center;
 	color: #fff;
-	width: 105%;
-	margin-left: -2.5%;
 }
 
 .panel-img {
@@ -171,6 +167,12 @@ nav a:hover {
 	border-radius: 5px;
 	line-height: 0;
 	font-size:	1em;
+	transition: .5s all ease-in-out;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #B79ED7;
 }
 
 .login-form button {
@@ -270,6 +272,7 @@ footer a:hover {
 		display: inline-block;
 		line-height: 1;
 		height: 25px;
+		transition: .5s all ease-in-out;
 	}
 
 	.edit-button:last-child {
@@ -382,6 +385,7 @@ footer a:hover {
 	}
 
 	#container svg {
+		margin-left: -10px;
 		height: 320px;
 	}
 
@@ -440,15 +444,16 @@ footer a:hover {
 }
 
 .selected {
-    background-color: #ccc;
+	border: 3px #EE7468 solid !important;
 }
 
 .new-entry label {
     display: inline-block;
     cursor: pointer;
-    margin: 0 0 10px 0;
+    margin: 0 2px 10px;
     border-radius: 5px;
     padding: 2px;
+    border: 3px solid #fff;
 }
 
 .icon {
@@ -479,7 +484,7 @@ footer a:hover {
 	justify-content: center;
 	flex-wrap: wrap;
 	min-height: 200px;
-	padding: 20px;
+	padding: 60px 40px;
 }
 
 .cloud {
@@ -522,10 +527,14 @@ footer a:hover {
 	max-width: 1100px;
 }
 
-@media only screen and (min-width: 425px) {
-	.register-form {
-		width: 60%;
+@media only screen and (min-width: 375px) {
+
+	#container svg {
+		margin-left: 0;
 	}
+}
+
+@media only screen and (min-width: 425px) {
 
 	.login-modal {
 		width: 70%;
@@ -566,7 +575,7 @@ footer a:hover {
 	}
 	
 	.register-form {
-		width: 45%;
+		width: 50%;
 		margin:  0 auto;
 	}
 
@@ -788,6 +797,21 @@ footer a:hover {
 		min-height: 100px;
 	}
 
+	.date-bar, .entry-card-bar {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
+	.entry-card {
+		width: 80%;
+		margin-bottom: 15px;
+	}
+
+	.entry-data {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
 	.pie .name, .bar .name {
 		font-size: 1.1em;
 		line-height: 1;
@@ -839,7 +863,8 @@ footer a:hover {
 		bottom: 0;
 		left: 0;
 		right: 0;
-		padding: 75px 100px 50px;
+		padding: 100px;
+		font-size: 2em;
 	}
 
 }

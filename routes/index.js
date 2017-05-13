@@ -71,7 +71,7 @@ router.get('/addEntry', (req, res) => {
 	.findOne()
 	.exec()
 	.then(entry => {
-	   res.render('addNew', {user : req.user, moods: entry.moods, activities:entry.activities});
+	   res.render('add', {user : req.user, moods: entry.moods, activities:entry.activities});
    	 })
 });
 
@@ -91,7 +91,7 @@ router.get('/edit/:date', (req, res) => {
 	.then(entry => {
 		var mood = user[0].entries[0].mood; 
 		var allMoods = entry.moods; 
-	     res.render('editNew', {user : req.user, entries: user[0].entries[0], moods:entry.moods, activities:entry.activities, mood:mood });
+	     res.render('edit', {user : req.user, entries: user[0].entries[0], moods:entry.moods, activities:entry.activities, mood:mood });
 		
    	 })
 		

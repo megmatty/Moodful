@@ -5,166 +5,33 @@ block content
  .container
   .banner
     h1 Edit Entry
-    p Instructions go here
+
+    p Go ahead and edit your entry if you made an error, but try not to edit just because you didn't like what you wrote! <br /> Part of mindfulness is accepting the present as it is, and the past as it was.
   .new-entry-container
     form.new-entry(role='form', action='/edit/' + '#{entries.date}', method='post')
       fieldset.new-mood
        legend Mood
-       input#amused(class= 'input_hidden', type='radio', name='mood', value='amused')
-       label(for='amused', class=('amused' === entries.mood) ? 'selected' : '')
-        .icon
-          img(src='../img/moods/amused.svg', alt="amused face")
-          span amused
-       input#angry(class= 'input_hidden', type='radio', name='mood', value='angry')
-       label(for='angry', class=('angry' === entries.mood) ? 'selected' : '')
-        .icon
-         img(src='../img/moods/angry.svg', alt="angry face")
-         span angry
-       input#anxious(class= 'input_hidden', type='radio', name='mood', value='anxious')
-       label(for='anxious', class=('anxious' === entries.mood) ? 'selected' : '')
-        .icon        
-         img(src='../img/moods/anxious.svg', alt="anxious face")
-         span anxious
-       input#content(class= 'input_hidden', type='radio', name='mood', value='content')
-       label(for='content', class=('content' === entries.mood) ? 'selected' : '')
-        .icon
-         img(src='../img/moods/content.svg', alt="content face")
-         span content
-       input#excited(class= 'input_hidden', type='radio', name='mood', value='excited')
-       label(for='excited', class=('excited' === entries.mood) ? 'selected' : '')
-        .icon
-         img(src='../img/moods/excited.svg', alt="excited face")
-         span excited
-       input#happy(class= 'input_hidden', type='radio', name='mood', value='happy')
-       label(for='happy', class=('happy' === entries.mood) ? 'selected' : '')
-        .icon
-         img(src='../img/moods/happy.svg', alt="happy face")
-         span happy
-       input#irritable(class= 'input_hidden', type='radio', name='mood', value='irritable')
-       label(for='irritable', class=('irritable' === entries.mood) ? 'selected' : '')
-        .icon
-         img(src='../img/moods/irritable.svg', alt="irritable face")
-         span irritable
-       input#meh(class= 'input_hidden', type='radio', name='mood', value='meh')
-       label(for='meh', class=('meh' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/meh.svg', alt="meh face")
-         span meh
-       input#numb(class= 'input_hidden', type='radio', name='mood', value='numb')
-       label(for='numb', class=('numb' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/numb.svg', alt="numb face")
-         span numb
-       input#relaxed(class= 'input_hidden', type='radio', name='mood', value='relaxed')
-       label(for='relaxed', class=('relaxed' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/relaxed.svg', alt="relaxed face")
-         span relaxed
-       input#sad(class= 'input_hidden', type='radio', name='mood', value='sad')
-       label(for='sad', class=('sad' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/sad.svg', alt="sad face")
-         span sad
-       input#shy(class= 'input_hidden', type='radio', name='mood', value='shy')
-       label(for='shy', class=('shy' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/shy.svg', alt="shy face")
-         span shy
-       input#stressed(class= 'input_hidden', type='radio', name='mood', value='stressed')
-       label(for='stressed', class=('stressed' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/stressed.svg', alt="stressed face")
-         span stressed
-       input#surprised(class= 'input_hidden', type='radio', name='mood', value='surprised')
-       label(for='surprised', class=('surprised' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/surprised.svg', alt="surprised face")
-         span surprised
-       input#tired(class= 'input_hidden', type='radio', name='mood', value='tired')
-       label(for='tired', class=('tired' === entries.mood) ? 'selected' : '')
-        .icon 
-         img(src='../img/moods/tired.svg', alt="tired face")
-         span tired
-
+       each e in moods
+         input(id='#{e.name}', type='radio',  class= 'input_hidden', name='mood', value='#{e.name}' checked=('#{e.name}'==='#{mood}' ? "checked" : undefined)) 
+         label(for='#{e.name}' class="#{e.name===mood ? 'selected' : ''}")
+          .icon
+            img(src='../img/moods/#{e.name}.svg', alt="#{e.name} face")
+            span #{e.name}  
       fieldset.new-activity
        legend Activity
-       input#art(class= 'input_hidden', type='checkbox', name='activity[]', value='art')
-       label(for='art', class=('art' === entries.activity) ? 'selected' : '')
-        .icon
-         img(src='../img/activities/art.svg', alt="art icon")
-         span art
-
-       input#chores(class= 'input_hidden', type='checkbox', name='activity[]', value='chores')
-       label(for='chores', class=('chores' === entries.activity) ? 'selected' : '')
-        .icon 
-         img(src='../img/activities/chores.svg', alt="chores icon")
-         span chores
-         
-       input#computer(class= 'input_hidden', type='checkbox', name='activity[]', value='computer')
-       label(for='computer', class=('computer' === entries.activity) ? 'selected' : '')
-        .icon 
-         img(src='../img/activities/computer.svg', alt="computer icon")
-         span computer
-       input#exercise(class= 'input_hidden', type='checkbox', name='activity[]', value='exercise')
-       label(for='exercise')
-        .icon 
-         img(src='../img/activities/exercise.svg', alt="exercise icon")
-         span exercise
-       input#family(class= 'input_hidden', type='checkbox', name='activity[]', value='family')
-       label(for='family')
-        .icon 
-         img(src='../img/activities/family.svg', alt="family icon")
-         span family
-       input#meditate(class= 'input_hidden', type='checkbox', name='activity[]', value='meditate')
-       label(for='meditate')
-        .icon 
-         img(src='../img/activities/meditate.svg', alt="meditate icon")
-         span meditate
-       input#movie-tv(class= 'input_hidden', type='checkbox', name='activity[]', value='movie/tv')
-       label(for='movie-tv')
-        .icon 
-         img(src='../img/activities/movie-tv.svg', alt="movie-tv icon")
-         span movie/tv
-       input#music(class= 'input_hidden', type='checkbox', name='activity[]', value='music')
-       label(for='music')
-        .icon 
-         img(src='../img/activities/music.svg', alt="music icon")
-         span music
-       input#nap(class= 'input_hidden', type='checkbox', name='activity[]', value='nap')
-       label(for='nap')
-        .icon 
-         img(src='../img/activities/nap.svg', alt="nap icon")
-         span nap
-       input#nature(class= 'input_hidden', type='checkbox', name='activity[]', value='nature')
-       label(for='nature')
-        .icon 
-         img(src='../img/activities/nature.svg', alt="nature icon")
-         span nature
-       input#pet(class= 'input_hidden', type='checkbox', name='activity[]', value='pet')
-       label(for='pet')
-        .icon 
-         img(src='../img/activities/pet.svg', alt="pet icon")
-         span pet
-       input#games(class= 'input_hidden', type='checkbox', name='activity[]', value='games')
-       label(for='games')
-        .icon 
-         img(src='../img/activities/games.svg', alt="games icon")
-         span games
-       input#read(class= 'input_hidden', type='checkbox', name='activity[]', value='read')
-       label(for='read')
-        .icon 
-         img(src='../img/activities/read.svg', alt="read icon")
-         span read
-       input#school(class= 'input_hidden', type='checkbox', name='activity[]', value='school')
-       label(for='school')
-        .icon 
-         img(src='../img/activities/school.svg', alt="school icon")
-         span school
-       input#work(class= 'input_hidden', type='checkbox', name='activity[]', value='work')
-       label(for='work')
-        .icon 
-         img(src='../img/activities/work.svg', alt="work icon")
-         span work
+       each a in activities
+         if entries.activity
+          input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=checked(a, entries.activity))
+          label(for='#{a.name}' class=selected(a, entries.activity))
+           .icon
+             img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
+             span #{a.name}  
+         else 
+          input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}') 
+          label(for='#{a.name}')
+           .icon
+             img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
+             span #{a.name}  
 
       fieldset.new-journal
        legend Journal
@@ -173,12 +40,3 @@ block content
       button.btn(type='submit') Submit
     
 
-
-    //- form.new-entry(role='form', action='/edit/' + '#{entries.date}', method='post')
-    //-   fieldset.new-mood
-    //-     input(type='text', name='mood', placeholder='Add Mood', value= '#{entries.mood}')
-    //-   fieldset.new-activity
-    //-     input(type='text', name='activity', placeholder='Add Activity', value= '#{entries.activity}')
-    //-   fieldset.new-journal
-    //-     textarea(type='text', name='journal', placeholder='Add Journal') #{entries.journal}
-    //-   button(type='submit') Submit
