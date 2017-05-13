@@ -30,14 +30,21 @@ router.post('/register', (req, res, next) => {
 });
 
 //POST LOGIN
-router.post('/login', passport.authenticate('local'), (req, res, next) => { 
-    req.session.save((err) => {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/dashboard');
-    });
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      if (err) { return next(err); }
+      if (!user) {
+        return res.render('index', { error : 'Username or password is incorrect' }); 
+      }
+      req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        return res.redirect('/dashboard');
+      });
+    })(req, res, next);
 });
+
+
+
 
 //GET /logout
 router.get('/logout', (req, res, next) => {
@@ -166,6 +173,13 @@ router.get('/dashboard', (req, res) => {
 
 
 //     let arr = moodData(req)
+//     console.log(arr);
+//     console.log(req.user);
+//   //   [ { name: 'sad', value: 1 },
+//   // { name: 'meh', value: 2 },
+//   // { name: 'numb', value: 1 },
+//   // { name: 'angry', value: 1 } ]
+
 
 //     res.render('socialDash', {user : req.user, data : arr });
 // });
