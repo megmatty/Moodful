@@ -6,7 +6,7 @@ block content
   .banner
     h1 Edit Entry
 
-    p Instructions go here
+    p Go ahead and edit your entry if you made an error, but try not to edit just because you didn't like what you wrote! Part of mindfulness is accepting the present as it is, and the past as it was.
   .new-entry-container
     form.new-entry(role='form', action='/edit/' + '#{entries.date}', method='post')
       fieldset.new-mood
@@ -21,8 +21,8 @@ block content
        legend Activity
        each a in activities
          if entries.activity
-          input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=('#{entries.activity.indexOf(Object.values(a).toString())}' > -1 ? "checked" : undefined  ))
-          label(for='#{a.name}' class="#{entries.activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : ''}")
+          input(id='#{a.name}', type='checkbox',  class= 'input_hidden', name='activity[]', value='#{a.name}' checked=checked(a, entries.activity))
+          label(for='#{a.name}' class=selected(a, entries.activity))
            .icon
              img(src='../img/activities/#{a.name}.svg', alt="#{a.name} face")
              span #{a.name}  

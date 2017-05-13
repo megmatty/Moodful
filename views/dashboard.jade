@@ -19,7 +19,7 @@ block content
           span(style="font-size:#{d.value}em;") #{d.name}
    .dashboard-item-container
     .dashboard-item-bar
-     span Weekly Moods
+     span Last 10 Moods
     .piechart
       if (user.entries == 0)
        p You haven't logged any moods yet
@@ -33,24 +33,20 @@ block content
       if (user.entries == 0)
        span 
       else
-        span.last-entry-date(href= '/log/' + user.entries[user.entries.length - 1].date) #{moment(user.entries[user.entries.length - 1].date).format('lll')} 
+        span.last-entry-date(href= '/log/' + user.entries[0].date) #{moment(user.entries[0].date).format('lll')} 
       span Last Entry
     .entry-data
      if (user.entries == 0)
       p You haven't logged any moods yet
      else
-      - for (var i=0; i<user.entries.length; i++) {
-       - if (i === user.entries.length - 1) {
-        span.lastmood
-         .icon-log 
-          img(src='img/moods/#{user.entries[i].mood}.svg', alt="#{user.entries[i].mood} face")
-          span #{user.entries[i].mood}
-        .lastact-container
-         - for (var j=0; j<user.entries[i].activity.length; j++)
-            span.lastact #{user.entries[i].activity[j]}
-        span.lastjourn #{user.entries[i].journal}
-       - }
-      - }
+      span.lastmood
+       .icon-log
+        img(src='img/moods/#{user.entries[0].mood}.svg', alt="#{user.entries[0].mood} face")
+        span #{user.entries[0].mood}
+      .lastact-container
+        span.lastact #{user.entries[0].activity[0]}
+      span.lastjourn #{user.entries[0].journal}
+
 block dashScripts
   script(type='text/javascript').
     var local_data =!{JSON.stringify(data)}

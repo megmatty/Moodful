@@ -146,10 +146,7 @@ nav a:hover {
 }
 
 .login-form {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: baseline;
+	display: block;
 }
 
 .login-form input {
@@ -177,11 +174,11 @@ nav a:hover {
 }
 
 .login-form button {
-	margin-left: 25px;
+	display: inline-block;
 }
 
 .login-cancel-btn {
-	margin-right: 25px;
+	margin-left: 25px;
 }
 
 .register-form {
@@ -371,7 +368,7 @@ footer a:hover {
 		cursor: pointer;
 		border-radius: 5px;
 		width: 100px;
-		margin: 0 auto;
+		margin: 0 auto 25px;
 		transition: .5s all ease-in-out;
 	}
 
@@ -382,6 +379,10 @@ footer a:hover {
 	#container input {
 		position: absolute;
     	left: -9999px;
+	}
+
+	#container svg {
+		height: 320px;
 	}
 
 	/*Add new entry*/

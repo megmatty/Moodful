@@ -19,7 +19,7 @@ block content
   #analyze.info-panel
    .info-text 
     h3 Analyze your entries
-    p In addition to displaying your log entries, Moodful provides a monthly "mood cloud", a weekly pie chart breakdown of your moods, and displays your last entry for your personal reflection. Reviewing this information can further help you gain awareness of how you feel over time.
+    p In addition to displaying your log entries, Moodful provides a "mood cloud" and pie chart of your last 10 moods, and displays your last journal for personal reflection. Reviewing this information can further help you gain awareness of how you feel over time.
    img.panel-img(src='/img/analyze.png' alt='bar chart with face')
   #reg.info-panel-reg
     h3 Register
@@ -42,7 +42,6 @@ block content
       label(for='password') Password:
       input(type='password', name="password", placeholder='Password')
       button.btn(type='submit') Submit
-      br
       a(href='/')
         button.btn.login-cancel-btn(type="button") Cancel
   include footer

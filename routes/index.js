@@ -6,7 +6,6 @@ const Entry = require('../models/entry');
 const router = express.Router();
 const app = express();
 
-
 //GET /
 router.get('/', (req, res) => {
     res.render('index', { user : req.user });
@@ -31,7 +30,7 @@ router.post('/register', (req, res, next) => {
 });
 
 //POST LOGIN
-router.post('/login', passport.authenticate('local'), (req, res, next) => { //, { failureRedirect: '/login', failureFlash: true }s
+router.post('/login', passport.authenticate('local'), (req, res, next) => { 
     req.session.save((err) => {
         if (err) {
             return next(err);
@@ -90,7 +89,6 @@ router.get('/edit/:date', (req, res) => {
 	.findOne()
 	.exec()
 	.then(entry => {
-	        //res.render('addNew', {user : req.user, moods: entry.moods, activities:entry.activities});
 		var mood = user[0].entries[0].mood; 
 		var allMoods = entry.moods; 
 	     res.render('editNew', {user : req.user, entries: user[0].entries[0], moods:entry.moods, activities:entry.activities, mood:mood });
@@ -114,22 +112,17 @@ function repeatMood(allMoods, mood){
 
 
 function moodData(req){
+    var lastTen = req.user.entries.reverse().slice(-10); //get last 10 entries
 
-	// console.log('in mood');
-	// console.log(req.body)
     var arr = [];
-    //for (var i = req.user.entries.length - 1; i > req.user.entries.length - 8; i--) {
-     for (var i = 0; i < req.user.entries.length; i++) {
+     for (var i = 0; i < lastTen.length; i++) {
         var key = req.user.entries[i].mood;
 
-        // console.log(key);
         for(var j = 0; j < arr.length; j++){
             var obj = arr[j]
-            // console.log(obj);
 
             if (obj.name == key) {
 
-                // console.log('repeat');
                 obj['value']++;
                 break;
             }
@@ -141,7 +134,6 @@ function moodData(req){
             arr.push(obj)
         }
     }
-    // console.log(arr)
     return arr;
 }
 
@@ -158,32 +150,29 @@ router.get('/dashboard', (req, res) => {
 
 
 //GET /socialDash
-router.get('/social_dashboard', (req, res) => {
+// router.get('/social_dashboard', (req, res) => {
 
-    if (!req.user) {
-      res.redirect('/');
-      return
-    }
-    Entry
-	.findOne()
-	.exec()
-	.then(entry => {
-		console.log('this is it');
-		console.log(entry)
-	})
+//     if (!req.user) {
+//       res.redirect('/');
+//       return
+//     }
+//     Entry
+// 	.findOne()
+// 	.exec()
+// 	.then(entry => {
+// 		console.log('this is it');
+// 		console.log(entry)
+// 	})
 
 
-    let arr = moodData(req)
+//     let arr = moodData(req)
 
-    res.render('socialDash', {user : req.user, data : arr });
-});
+//     res.render('socialDash', {user : req.user, data : arr });
+// });
 
 
 //POST /addEntry
 router.post('/addEntry', (req, res) => {
-	// console.log('body')
-	// console.log(req.body);
-
     Account 
       .findById(req.user.id)
       .exec() 
@@ -203,9 +192,6 @@ router.post('/addEntry', (req, res) => {
 
 // POST /edit/:date
 router.post('/edit/:date', (req, res) => {
-	// console.log('post');
-	// console.log(req.body);
-
     Account
       .findById(req.user.id)
       .update(

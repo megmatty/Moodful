@@ -28,22 +28,19 @@ app.use(passport.session());
 app.use('/', routes);
 app.locals.moment = require('moment');
 
+
+//Edit log functions
+  //Workaround for Object.values is not a function error from jade
 function checked(a, activity) {
-  // console.log(activity, "anything");
-  // return activity.indexOf(Object.values(a).toString()) > -1 ? "checked" : undefined;
-  return undefined;
+  return activity.indexOf(Object.values(a).toString()) > -1 ? "checked" : undefined;
 }
 
 function selected(a, activity) {
-  console.log("LOG ANYTHING");
-  return 1;
   return activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : '';
 }
-//'#{entries.activity.indexOf(Object.values(a).toString())}' > -1 ? "checked" : undefined  )
-//#{ entries.activity.indexOf(Object.values(a).toString()) > -1 ? 'selected' : ''}
+
 app.locals.checked = checked;
 app.locals.selected = selected;
-
 
 
 
