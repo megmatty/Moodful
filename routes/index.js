@@ -44,8 +44,6 @@ router.post('/login', function(req, res, next) {
 });
 
 
-
-
 //GET /logout
 router.get('/logout', (req, res, next) => {
     req.logout();
