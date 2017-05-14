@@ -6,9 +6,9 @@ Moodful is a way to capture, track, and monitor your daily moods. Over time, you
 
 ### Screenshots
 ![Home](http://i.imgur.com/ZA3FxRp.png?1)
-![Dashboard](http://i.imgur.com/5N1mFD4.png?1)
 ![Log](http://i.imgur.com/OLJXo75.png?1)
 ![Add Entry](http://i.imgur.com/wIJGQx5.png?1)
+![Dashboard](http://i.imgur.com/5N1mFD4.png?1)
 
 ### Technology Used
 * HTML/CSS/jQuery
