@@ -75,11 +75,11 @@ router.get('/addEntry', (req, res) => {
       res.redirect('/');
     }
     Entry
-	.findOne()
-	.exec()
-	.then(entry => {
-	   res.render('add', {user : req.user, moods: entry.moods, activities:entry.activities});
-   	 })
+    	.findOne()
+    	.exec()
+    	.then(entry => {
+    	   res.render('add', {user : req.user, moods: entry.moods, activities:entry.activities});
+      })
 });
 
 //GET /editEntry
@@ -157,32 +157,32 @@ router.get('/dashboard', (req, res) => {
 
 
 //GET /socialDash
-// router.get('/social_dashboard', (req, res) => {
+router.get('/social_dashboard', (req, res) => {
 
-//     if (!req.user) {
-//       res.redirect('/');
-//       return
-//     }
-//     Entry
-// 	.findOne()
-// 	.exec()
-// 	.then(entry => {
-// 		console.log('this is it');
-// 		console.log(entry)
-// 	})
-
-
-//     let arr = moodData(req)
-//     console.log(arr);
-//     console.log(req.user);
-//   //   [ { name: 'sad', value: 1 },
-//   // { name: 'meh', value: 2 },
-//   // { name: 'numb', value: 1 },
-//   // { name: 'angry', value: 1 } ]
+    if (!req.user) {
+      res.redirect('/');
+      return
+    }
+    Entry
+	.findOne()
+	.exec()
+	.then(entry => {
+		console.log('this is it');
+		console.log(entry)
+	})
 
 
-//     res.render('socialDash', {user : req.user, data : arr });
-// });
+    let arr = moodData(req)
+    console.log(arr);
+    console.log(req.user);
+  //   [ { name: 'sad', value: 1 },
+  // { name: 'meh', value: 2 },
+  // { name: 'numb', value: 1 },
+  // { name: 'angry', value: 1 } ]
+
+
+    res.render('socialDash', {user : req.user, data : arr });
+});
 
 
 //POST /addEntry
@@ -198,11 +198,34 @@ router.post('/addEntry', (req, res) => {
             'journal': req.body.journal
         });
         user.save();
+        incrementEntry(req.body.mood);
         res.redirect('/log');
       }) 
-      .catch(err => { console.error(err); 
+      .catch(err => { console.error(err);
     res.status(500).redirect('/log'); });
 });
+
+function incrementEntry(mood) {
+  console.log(mood);
+  Entry
+    .findAndModify({
+    query: { key: "value", value: { $exists: true, $ne : null } },    
+    update: { $inc: { value: 1 } },
+    upsert: true
+  })
+    .exec()
+    .then(thing => {
+      console.log(thing);
+    });
+  Entry
+    .findAndModify({
+    query: { key: "value", value: { $exists: false } },    
+    update: { $set: { value: 1 } },
+    upsert: true
+  });
+}
+
+// update: { $set: { value: 1000 } }, upsert: true
 
 // POST /edit/:date
 router.post('/edit/:date', (req, res) => {
