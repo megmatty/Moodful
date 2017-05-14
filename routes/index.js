@@ -156,35 +156,6 @@ router.get('/dashboard', (req, res) => {
 });
 
 
-//GET /socialDash
-// router.get('/social_dashboard', (req, res) => {
-
-//     if (!req.user) {
-//       res.redirect('/');
-//       return
-//     }
-//     Entry
-// 	.findOne()
-// 	.exec()
-// 	.then(entry => {
-// 		console.log('this is it');
-// 		console.log(entry)
-// 	})
-
-
-//     let arr = moodData(req)
-//     console.log(arr);
-//     console.log(req.user);
-//   //   [ { name: 'sad', value: 1 },
-//   // { name: 'meh', value: 2 },
-//   // { name: 'numb', value: 1 },
-//   // { name: 'angry', value: 1 } ]
-
-
-//     res.render('socialDash', {user : req.user, data : arr });
-// });
-
-
 //POST /addEntry
 router.post('/addEntry', (req, res) => {
     Account 
